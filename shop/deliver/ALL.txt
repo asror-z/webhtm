@@ -1,0 +1,4 @@
+- statistics how many delivers
+- new orders for that deliver
+- finished orders
+- 

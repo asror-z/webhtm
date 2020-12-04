@@ -1,0 +1,48 @@
+1. Potrebnost: 1-Vatandoshlarni o'rganish bo'yicha 2- Stipendiatlar o'rganish bo'yicha
+
+
+2. Vatandoshlar otdeliga 1 kishi javobgar bo'ladi.
++                   //kompatriot dgan rol bor usha jovobgar
+
+3. Potrebnost oldingi o'rganilgani arxiv bo'lib qoladi
++                   //Qilingan
+4. Vse rasxodiga  1ta qo'shiladi
++
+
+5. Umumiy tablitsani Monitoringga chiqarish
++-                   //AsrorAka o'zlari qladila
+
+6. Glavniy faqat sistemaga kirmagan userlar uchun
++                   //Qilingan
+7. Dokumentlani ichiga 4 talasiga ham obyektivka qo'shib qo'yish
++                   //Qilindi
+
+8. Stipendiat kommentariyani o'zgartira olmaydi u faqat monitornig tomonidan o'zgartiriladi
++                   //QIlindi
+
+9.Dokumentlar: Word, Excel, PDF, PNG, JPEG formatlarini qabul qilishi kerak
++                   //FileInput qbul qladi
+
+10.Doktorantura-Magistraturada rasxodlar yana ko'payishi  mumkin(masalan Viza uchun)
+?
+
+11.Obshiy rasxodlani xar bittasini oldida So'mda va USD da ko'rsatib turadigan bo'lishi kere.
++                   //Abdulloh
+12.Stipendiat: Glavniy, Novosti Dokumentlar, Otchotla, obshiy inform , chat,   izmenit,FAQ,MAP, Adres. +
+
+
+13.News ga yoki podrobno yoki pagination qo'shish
++                   //XakimAka
+
+
+14. Moderatorga: Glavniy, Novosti, Spisok stipendiatov,Extiyojlar.
++                   //Qilingan
+15. Loginni hech kim o'zgartirolmasligi kerak
++                   //Faqat admin o'zgartira oladi
+16.Faqat passwordni o'zgartirishi mumkin (xamma roldagilar uchun)
+-                   //AsrorAka o'zlari qladila Master-klass
+
+17. Xamma roldagilar uchun 1-Glavniy, 2-Novosti, 3-dan boshlar roliga qarab
++                   //to'g'irlandi
+18. Otchyot va Dokumentlani EyufScholar kritganda qachon kiritgan kuni ko'rinib turishi kerak
++                   //Qilindi

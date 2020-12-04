@@ -1,0 +1,13 @@
+Ignore
+
+    block
+    apps
+    thm
+    lays
+    test
+    @
+
+
+Always
+
+    core

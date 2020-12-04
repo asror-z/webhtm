@@ -1,0 +1,92 @@
+<?php
+
+use zetsoft\dbitem\core\WebItem;
+use zetsoft\models\shop\ShopOrder;
+use zetsoft\models\shop\ShopStatus;
+use zetsoft\system\Az;
+use zetsoft\system\kernels\ZView;
+use zetsoft\system\kernels\ZWidget;
+use zetsoft\widgets\ajaxify\ZIntercoolerWidget;
+use zetsoft\widgets\blocks\ZNProgressWidget;
+use zetsoft\widgets\former\ZDynaWidget;
+use zetsoft\widgets\menus\ZMmenuWidgetSh;
+use zetsoft\widgets\notifier\ZSessionGrowlWidget;
+use zetsoft\models\shop\ShopBrand;
+
+
+/** @var ZView $this */
+
+
+/**
+ *
+ * Action Params
+ */
+
+$action = new WebItem();
+
+$action->title = Azl . 'Бренды';
+$action->icon = 'fa fa-globe';
+$action->type = WebItem::type['html'];
+$action->csrf = true;
+$action->debug = false;
+//$action->layout = true;
+//$action->layoutFile = 'admin';
+
+
+$this->paramSet(paramAction, $action);
+
+$this->title();
+$this->toolbar();
+
+?>
+<nav id="menu"></nav>
+<div id="page">
+    <div id="content" class="content-footer p-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="card col-2">
+                        <div class="card-body">
+                            <div class="card-text">
+                                <ul>
+                                    <li>Все заказы: <?= Az::$app->market->companyStat->orderCountAll() ?></li>
+                                    <?php
+                                    //                                    vdd(ShopOrderStatus::find()->all());
+                                    foreach (ShopStatus::find()->all() as $key => $status):
+                                        ?>
+                                        <li><?= $status->name ?>
+                                            : <?= Az::$app->market->companyStat->orderByStatusAndCompany($status->id) ?></li>
+                                    <?php endforeach; ?>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card col-2">
+                        <div class="card-body">
+
+
+                            <div class="card-text">
+                                <ul>
+                                    <li>Всего товаров штук:</li>
+                                    <li>Всего товаров кг:</li>
+                                    <li>Всего товаров метр:</li>
+                                    <li>Всего товаров литр:</li>
+                                    <li>Заказов сегодня:</li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+

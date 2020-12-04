@@ -1,0 +1,45 @@
+
+
+
+manual
+# Ручная обработка
+
+--------------------------------------------
+
+
+progressive
+
+# Прогрессивный автодозвон
+
+----------------------------------------
+
+predictive
+
+//  Works only with queue
+
+# Предиктивный автодозвон
+
+
+
+---------------------------------------
+
+analytics
+# Статистика оператора
+
+
+-------------------------------------
+
+#
+# Главная страница | Operator Dashbord
+
+http://eyuf.zetsoft.uz/crm/operator/index.aspx
+
+---------------------------------------------------------------------------------------
+supervisor/index
+#Главная страница | Supervisor Dashbord
+
+http://eyuf.zetsoft.uz/crm/supervisor/index.aspx
+http://eyuf.zetsoft.uz/crm/users/index.aspx
+http://eyuf.zetsoft.uz/crm/status/index.aspx
+---------------------------------------------------------------------------------------
+

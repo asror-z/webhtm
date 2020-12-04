@@ -1,0 +1,182 @@
+ALL - MMenu, another navbar
+
+--------------------------------------------------------------------------
+
+main
+
+# statistics,
+    ex. http://trial7.on-advantshop.net/257129-xiom/adminv3
+    ex. https://glotr.uz/company/ru/16460/1/
+
+http://eyuf.zetsoft.uz/admin/main/index.aspx
+
+    statistics for admin:
+    nechta market
+    nechta product with measurement //kg,m,nechta,litr
+    nechta deliver
+    nechta operator
+    nechta sklad
+    
+
+--------------------------------------------------------------------------------------
+
+markets 
+
+# dyna
+
++tab1 http://eyuf.zetsoft.uz/cruds/user-company.aspx
++tab2 http://eyuf.zetsoft.uz/cruds/shop-payment-type.aspx
++tab3 http://eyuf.zetsoft.uz/cruds/shop-payment.aspx
+
+---------------------------------------------------------------------------------------
+
+analytics
+
+# statistics, filter
+
+    ex. https://uzb.app.shipox.com/dashboard/charts?search_type=all&from_date_time=2020-06-10%2000%3A00&to_date_time=2020-06-17%2023%3A59
+    ex. http://trial7.on-advantshop.net/257129-xiom/adminv3/analytics
+    ex. https://glotr.uz/company/ru/statistics/catalogue/16460/
+
+---------------------------------------------------------------------------------------
+
+warehouse
+
+# dyna
+
+    ex. https://uzb.app.shipox.com/dashboard/warehouse/list/all
+
+---------------------------------------------------------------------------------------
+
+orders
+
+#tabs by status, dyna
+
+    ex. http://trial7.on-advantshop.net/257129-xiom/adminv3/orders
+    ex. https://glotr.uz/company/ru/proposals/16460/s
+    ex. 1C
+
++tab1 http://eyuf.zetsoft.uz/cruds/shop-order.aspx
++tab2 http://eyuf.zetsoft.uz/cruds/shop-order-item.aspx
++tab3 http://eyuf.zetsoft.uz/cruds/shop-shipment.aspx
++tab4 http://eyuf.zetsoft.uz/cruds/shop-status.aspx
++tab5 http://eyuf.zetsoft.uz/cruds/shop-reject-cause.aspx
+
+---------------------------------------------------------------------------------------
+
+products
+
+#tabs by status, dyna
+
++tab1 http://eyuf.zetsoft.uz/cruds/shop-product.aspx
++tab2 http://eyuf.zetsoft.uz/cruds/shop-catalog.aspx
++tab3 http://eyuf.zetsoft.uz/cruds/shop-option-type.aspx
++tab4 http://eyuf.zetsoft.uz/cruds/shop-question.aspx
++tab5 http://eyuf.zetsoft.uz/cruds/shop-review.aspx
+
+---------------------------------------------------------------------------------------
+
+couriers
+
+#   tabs by status, dyna
+
+    ex. https://uzb.app.shipox.com/dashboard/driver/list
+
+http://eyuf.zetsoft.uz/cruds/shop-courier.aspx
+    
+---------------------------------------------------------------------------------------
+
+clients
+
+# dyna, sort by
+
+    ex. https://uzb.app.shipox.com/dashboard/customer/list/all
+    ex. https://glotr.uz/company/ru/clients/16460/
+    ex. http://trial7.on-advantshop.net/257129-xiom/adminv3/customers
+    
+---------------------------------------------------------------------------------------
+
+transports
+
+# dyna, sort by
+
++tab1 http://eyuf.zetsoft.uz/cruds/auto.aspx
++tab2 http://eyuf.zetsoft.uz/cruds/auto-model.aspx?sort=name%2C-id
++tab3 http://eyuf.zetsoft.uz/cruds/auto-type.aspx
+---------------------------------------------------------------------------------------
+
+address
+
+# dyna, sort by
+
++tab1 http://eyuf.zetsoft.uz/cruds/place-adress.aspx
++tab2 http://eyuf.zetsoft.uz/cruds/place-country.aspx
++tab3 http://eyuf.zetsoft.uz/cruds/place-region.aspx
+
+---------------------------------------------------------------------------------------
+
+settings
+
+# dyna, sort by
+
+http://eyuf.zetsoft.uz/cruds/core-setting.aspx
+http://eyuf.zetsoft.uz/cruds/core-setting-type.aspx
+
+---------------------------------------------------------------------------------------
+
+spravochnik
+
+# dyna, sort by
+
+http://eyuf.zetsoft.uz/cruds/faqs-manual.aspx
+---------------------------------------------------------------------------------------
+
+users
+
+# dyna, sort by
+
++tab1 http://eyuf.zetsoft.uz/cruds/user.aspx
++tab2 http://eyuf.zetsoft.uz/cruds/user-blocked.aspx
++tab3 http://eyuf.zetsoft.uz/cruds/user-contact.aspx
++tab4 http://eyuf.zetsoft.uz/cruds/user-friend.aspx
++tab5 http://eyuf.zetsoft.uz/cruds/user-oauth.aspx
++tab6 http://eyuf.zetsoft.uz/cruds/user-rbac.aspx
+---------------------------------------------------------------------------------------
+
+menu
+
+# dyna, sort by
+
++tab1 http://eyuf.zetsoft.uz/cruds/menu.aspx
++tab2 http://eyuf.zetsoft.uz/cruds/menu-image.aspx
+
+---------------------------------------------------------------------------------------
+
+notifications
+
+# dyna, sort by
+
++tab1 http://eyuf.zetsoft.uz/cruds/chat-message.aspx
++tab2 http://eyuf.zetsoft.uz/cruds/chat-mail.aspx
++tab3 http://eyuf.zetsoft.uz/cruds/chat-group.aspx
++tab4 http://eyuf.zetsoft.uz/cruds/chat-message-public.aspx
++tab5 http://eyuf.zetsoft.uz/cruds/chat-notify.aspx
++tab6 http://eyuf.zetsoft.uz/cruds/chat-private.aspx
++tab7 http://eyuf.zetsoft.uz/cruds/chat-subscribe.aspx
+---------------------------------------------------------------------------------------
+
+news
+
+# dyna, sort by
+
++tab1 http://eyuf.zetsoft.uz/cruds/news.aspx
++tab2 http://eyuf.zetsoft.uz/cruds/news-type.aspx
+---------------------------------------------------------------------------------------
+
+coupons and sales
+
+# dyna, sort by
+
++tab1 http://eyuf.zetsoft.uz/cruds/shop-coupon.aspx
++tab2 http://eyuf.zetsoft.uz/cruds/shop-discount.aspx
+---------------------------------------------------------------------------------------

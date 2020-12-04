@@ -1,0 +1,283 @@
+<?php
+
+use zetsoft\dbitem\core\WebItem;
+use zetsoft\dbitem\data\ALLApp;
+use zetsoft\dbitem\data\Form;
+use zetsoft\system\Az;
+use zetsoft\system\helpers\ZArrayHelper;
+use zetsoft\system\helpers\ZUrl;
+use zetsoft\system\kernels\ZView;
+use zetsoft\system\kernels\ZWidget;
+use zetsoft\widgets\ajaxify\ZIntercoolerWidget;
+use zetsoft\widgets\blocks\ZNProgressWidget;
+use zetsoft\widgets\former\ZCheckDependWidget;
+use zetsoft\widgets\former\ZCheckSelectWidget;
+use zetsoft\widgets\former\ZDynaCheckWidget;
+use zetsoft\widgets\former\ZDynaSelectWidget;
+use zetsoft\widgets\former\ZDynaWidget;
+use zetsoft\widgets\former\ZFormBuildWidget;
+use zetsoft\widgets\former\ZFormWidget;
+use zetsoft\widgets\inputes\ZDropDownListWidget;
+use zetsoft\widgets\inputes\ZHHiddenInputWidget;
+use zetsoft\widgets\inputes\ZPeriodPickerCallWidget;
+use zetsoft\widgets\inputes\ZPeriodPickerWidget;
+use zetsoft\widgets\inputes\ZPeriodPickerWidgetX;
+use zetsoft\widgets\menus\ZMmenuWidget;
+use zetsoft\widgets\navigat\ZButtonWidget;
+use zetsoft\widgets\notifier\ZSessionGrowlWidget;
+use zetsoft\widgets\themes\ZCardWidget;
+use zetsoft\models\shop\ShopOrder;
+
+
+/** @var ZView $this */
+
+
+/**
+ * Action Params
+ */
+
+$action = new WebItem();
+
+$action->title = Azl . 'Создание Заказы';
+$action->icon = 'fa fa-pie-chart';
+$action->type = WebItem::type['html'];
+$action->csrf = true;
+$action->debug = true;
+
+
+
+$this->paramSet(paramAction, $action);
+
+$this->title();
+$this->toolbar();
+
+
+/**
+ *
+ * Start Page
+ */
+
+$this->beginPage();
+?>
+<!DOCTYPE html>
+<html lang="<?= Yii::$app->language ?>">
+<head>
+
+    <?php
+
+    require Root . '/webhtm/block/metas/main.php';
+    require Root . '/webhtm/block/assets/main.php';
+
+    $this->head();
+
+    ?>
+
+</head>
+
+
+<body class="<?= ZWidget::skin['white-skin'] ?>">
+<?php
+$this->beginBody();
+echo ZNProgressWidget::widget([]);
+echo ZMmenuWidget::widget([
+    'config' => [
+        'isAll' => true,
+        'theme' => 'white',
+        'content.img.width' => 230,
+        'iconbar.top' => [
+            "<a href='#/'><i class='fa fa-home'></i>cc</a>",
+            "<a href='#/'><i class='fa fa-home'></i>cc</a>",
+        ],
+        'iconbar.bottom' => [
+            "<a href='#/'><i class='fa fa-home'></i>aa</a>",
+            "<a href='#/'><i class='fa fa-home'></i>cc</a>",
+        ],
+        'all.border' => ZMmenuWidget::border['border-full'],
+        'menu-effect-slide' => true,
+    ],
+]);
+?>
+<div id="page">
+
+    <?
+
+    require Root . '/webhtm/block/header/main.php';
+    require Root . '/webhtm/block/navbar/admin.php';
+
+    echo ZSessionGrowlWidget::widget();
+
+
+    $model = new ShopOrder();
+
+    $users = [];
+    $operators = Az::$app->market->operator->getUserByRole('agent');
+
+    $firstSelect = null;
+    if (!empty($operators)) {
+        $firstSelect = $operators[0]['id'];
+
+        foreach ($operators as $operator)
+            $users[$operator['id']] = $operator['title'];
+
+    } else {
+        echo '<span class="pl-3">' . Az::l("operators are not fount") . '</span>';
+    }
+    
+    ?>
+    <div class="row">
+        <div class="col-md-4 mt-n1">
+            <?php
+            $startRange = $this->sessionGet('supervisorRangeDatePeriod2');
+
+            $form = $this->ajaxBegin();
+            $app = new ALLApp();
+
+            $column = new Form();
+            $column->dbType = dbTypeDate;
+            $column->widget = ZHHiddenInputWidget::class;
+            $app->columns['start'] = $column;
+
+            $column = new Form();
+            $column->dbType = dbTypeDate;
+            $column->widget = ZHHiddenInputWidget::class;
+            $app->columns['end'] = $column;
+
+            $column = new Form();
+            $column->title = 'form_id';
+            $column->widget = ZPeriodPickerCallWidget::class;
+            $column->options = [
+                'config' => [
+                    'timepicker' => true,
+                ],
+                'value' => $startRange,
+            ];
+
+
+            $app->columns['period'] = $column;
+
+            $model_d = Az::$app->forms->former->model($app);
+
+            $post = $this->httpPost('ZDynamicModel');
+
+
+            $period = ZArrayHelper::getValue($post, 'period');
+            if ($period && $post !== null) {
+                $dateBegin = $period[0];
+                $dateEnd = $period[1];
+
+
+
+                $this->sessionSet('supervisorRangeDatePeriod2', $period);
+                $this->urlRedirect(['/supervisor/main/indexX3'], true);
+
+            }
+
+            if ($startRange) {
+                $beginDate = $this->sessionGet('supervisorRangeDatePeriod2')[0];
+                $endDate = $this->sessionGet('supervisorRangeDatePeriod2')[1];
+                 //vdd($beginDate);
+                $beginDate= strtotime($beginDate);
+                $endDate = strtotime($endDate);
+
+                $beginDate =  date('d/m/Y H:i:s', $beginDate);
+                $endDate=  date('d/m/Y H:i:s', $endDate);
+                
+
+
+                if ($beginDate && $endDate) {
+                    $model->configs->query = ShopOrder::find()->where(['between', 'created_at', $beginDate, $endDate]);
+                }
+            }
+            
+                $this->ajaxEnd();
+            ?>
+        </div>
+    
+        <div class="col-md-12">
+            <?
+
+
+            $model->configs->nameOn = [
+                'id',
+                'contact_name',
+                'user_company_ids',
+                'contact_phone',
+                'status_callcenter',
+                'operator',
+                'created_at',
+                'date_approve',
+                'comment_agent',
+                'status_callcenter',
+                'date_deliver',
+                'place_adress_id'
+            ];
+            
+
+            $model->columns();
+
+
+            echo ZDynaWidget::widget([
+                'model' => $model,
+                'config' => [
+                    //'topRequireUrl' => '/webhtm/shop/supervisor/main/periodPicker.php',
+                    'isCard' => false,
+                    'contentOptions' => function ($model, $key, $index, $column) {
+
+                        /** @var ShopOrder $model */
+                        /** @var User $user */
+
+                        if($model->user_id == null)
+                        return null;
+
+                        $user = \zetsoft\models\user\User::findOne($model->user_id);
+
+                        if($user == null)
+                            return null;
+                        
+                        $class = ' ';
+                        if ($user->purchase_count > 1)
+                            $class = 'blue lighten-3';
+                        return [
+                            'class' => $class
+                        ];
+                    },
+
+                    'topRequireUrl' => '/webhtm/shop/supervisor/status-top.php',
+
+                ],
+                'leftBtn' => [
+                    'newBtn' => [
+                        'content' => '<div>' . $this->require( '/webhtm/shop/agent/manual/periodPicker.php', [
+                                    'model_d' => $model_d,
+                                ]
+                            ) . '</div>',
+                        'options' => [
+                            'class' => '',
+                        ]
+                    ]
+                ],
+            ]);
+
+            ?>
+        </div>
+        <style>
+            #zdynamicmodel-period{
+                display:grid;
+                padding-top: 4px;
+                border-radius:4px;
+            }
+        </style>
+    </div>
+
+    <? require Root . '\webhtm\block\footer\footerAdmin.php' ?>
+
+
+
+
+
+<?php $this->endBody() ?>
+
+</body>
+</html>
+
+<?php $this->endPage() ?>

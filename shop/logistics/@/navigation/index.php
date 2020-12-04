@@ -1,0 +1,142 @@
+<?php
+
+use kartik\builder\Form;
+use zetsoft\dbitem\core\WebItem;
+use zetsoft\models\maps\MapsNavigate;
+use zetsoft\models\shop\ShopOrder;
+use zetsoft\system\Az;
+use zetsoft\system\kernels\ZView;
+use zetsoft\system\kernels\ZWidget;
+use zetsoft\widgets\ajaxify\ZIntercoolerWidget;
+use zetsoft\widgets\blocks\ZNProgressWidget;
+use zetsoft\widgets\former\ZDynaWidget;
+use zetsoft\widgets\former\ZFormWidgetJ;
+use zetsoft\widgets\inputes\ZHInputWidget;
+use zetsoft\widgets\menus\ZMmenuWidget;
+use zetsoft\widgets\menus\ZMmenuWidgetSh;
+use zetsoft\widgets\notifier\ZSessionGrowlWidget;
+use zetsoft\models\shop\ShopShipment;
+use zetsoft\widgets\places\ZGoogleDb29WidgetZoir;
+use \zetsoft\widgets\places\ZGoogleNavigationReadyWidget;
+use yii\widgets\LinkPager;
+use yii\data\Pagination;
+
+
+/** @var ZView $this */
+
+
+/**
+ *
+ * Action Params
+ */
+
+$action = new WebItem();
+
+$action->title = Azl . 'Навигация товаров';
+$action->icon = 'fa fa-wifi';
+$action->type = WebItem::type['html'];
+$action->csrf = true;
+$action->debug = true;
+$action->layout = true;
+$action->layoutFile = 'admin';
+
+
+
+$this->paramSet(paramAction, $action);
+
+$this->title();
+$this->toolbar();
+?>
+    <div id="content" class="content-footer p-3">
+
+
+
+
+        <div class="row">
+
+             
+
+                <div class="col-md-12 col-12">
+
+                <?
+                $model = $this->modelGet(\zetsoft\models\core\CoreInput::class, 7);
+                $items = Az::$app->forms->modelz->data();
+                
+                      /*
+
+                $model = new MapsNavigate();
+
+                /** @var ZView $this */
+                /*echo ZDynaWidget::widget([
+                    'model' => $model,
+                ]);
+                  */
+
+
+                echo ZFormWidgetJ::widget([
+                    'model' => $model,
+                  
+                    'rows' => [
+                        [
+                            'attributes' => [
+
+                                'string_9' => [
+                                    'type' => Form::INPUT_WIDGET,
+                                    'widgetClass' => ZHInputWidget::className(),
+                                    'options' => [
+                                        'config' => [
+
+                                        ],
+                                    ]
+                                ],
+                            ]
+                        ],
+                        [
+                            'attributes' => [
+
+                                'jsonb_10' => [
+                                    'type' => Form::INPUT_WIDGET,
+                                    'widgetClass' => \zetsoft\widgets\places\ZGoogleNavigationReadyWidget::className(),
+                                    'options' => [
+                                        'config' => [
+                                            'data' => [3,26],
+                                            'height'                 =>500,
+                                            'width'                  =>800,
+                                            'searchAutoComplete'     => false,
+                                            'searchPlaceImageShow'   => false,
+                                            'zoom'                   => '12',
+                                            'markerCount'            => 0,
+                                            'limitWayPoints'         => 2,
+                                            'optimizeWaypoints'      => true,
+                                            'draggable'              => true,
+                                            'mapUseType' => 'read',
+                                            'depend'                 => [
+                                                'dependPlace' => true,
+                                                'depend_id' => 'coreinput-string_9',
+                                            ],
+                                        ]
+                                    ]
+                                ],
+                            ]
+                        ],
+
+
+
+                    ],
+
+                ]);
+
+
+                ?>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+

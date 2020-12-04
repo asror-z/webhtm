@@ -1,0 +1,96 @@
+
+main
+
+# cards and graphs
+# Dashboard
+  #MMenu, news, statistics, orders, reviews, questions, notifications
+
+http://eyuf.zetsoft.uz/seller/main/dashboard.aspx
+http://trial8.on-advantshop.net/257910-zoru/adminv3
+
+  http://trial7.on-advantshop.net/257129-xiom/adminv3
+  https://glotr.uz/company/ru/16460/1/
+
+    statistics for seller:
+    qancha order (count and money) bogani oxirgi month/today/yesterday
+    products left in stock with measurement
+    chart with orders counts and money   in tabs
+    orders by client statuses
+    sources in shop order just to view
+
+---------------------------------------------------------------------------------------
+
+order
+
+# tabs by status, datatable or dyna
+
+|   Все заказы
+    Новые
+    Оплаченные
+    Неоплаченные
+    Черновики
+                        s
+|   Создание заказа
+
+http://trial8.on-advantshop.net/257910-zoru/adminv3/orders/add#?gridOffersSelectvizr=%7B%22paginationCurrentPage%22:1,%22paginationPageSize%22:10,%22categoryId%22:%220%22,%22showMethod%22:%22AllProducts%22,%22data%22:%5B%5D%7D
+
+
+https://glotr.uz/company/ru/proposals/16460/
+http://trial7.on-advantshop.net/257129-xiom/adminv3/orders
+
+---------------------------------------------------------------------------------------
+
+clients
+
+# datatable or dyna, sort by
+
+https://glotr.uz/company/ru/clients/16460/
+http://trial8.on-advantshop.net/257910-zoru/adminv3/customers
+
+---------------------------------------------------------------------------------------
+
+  analytics
+
+  # statistics, filter
+
+|
+Заказы
+Покупатели
+Товары
+Отчет по товару
+Воронка продаж
+Телефония
+Менеджеры
+Email рассылки
+Поисковые запросы
+
+
+  http://trial7.on-advantshop.net/257129-xiom/adminv3/analytics
+  https://glotr.uz/company/ru/statistics/catalogue/16460/
+  
+---------------------------------------------------------------------------------------
+
+settings
+
+# cards and graphs
+# Dashboard
+
+
+http://eyuf.zetsoft.uz/seller/settings/index.aspx
+  # options
+
+  http://trial7.on-advantshop.net/257129-xiom/adminv3/settingstemplate
+  https://glotr.uz/constructor/ru/widgets/footer-about/16302/
+  https://glotr.uz/constructor/ru/widgets/16302/
+
+
+---------------------------------------------------------------------------------------
+
+
+shop-catalog
+
++tab1 # datatable or dyna (add/edit/delete), sort by
++tab2 # reviews
++tab3 # questions
+
+https://glotr.uz/company/ru/proposals/16460/

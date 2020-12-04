@@ -1,0 +1,28 @@
+ $active = new Ajaxer();
+                    $active->id = 'activeFormCheck';
+                    $active->showLabels = false;
+
+                    $form = $this->ajaxBegin($active);
+                    $model = Az::$app->market->product->filterFormItems($this->httpGet('id') ?? null);
+
+                    //vdd($model);
+                    echo ZFormWidget::widget([
+                        'model' => $model,
+                        'form' => $form,
+                        'config' => [
+                            'grapes' => false,
+                            'changeSubmit' => false,
+                            'topBtn' => false,
+                            'botBtn' => false,
+                        ],
+                        'event' => [
+                            'formChange' => <<<JS
+                                function(e) {
+                                e.preventDefault();
+                             $('#sendValues').click();
+                                //$.pjax.reload({container:'#activeFormCheck'});
+                          }
+JS
+
+                        ]
+                    ]);

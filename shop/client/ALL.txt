@@ -1,0 +1,149 @@
+ALL - category menu is hidden, breadcrumb
+
+--------------------------------------------------------------------------
+
+main-common
+
+# common card, top product, slider news & others, category menu, breadcrumb
+# Главная страница | MarketPlace
+https://best.aliexpress.ru/?lan=en
+
+Nilufar
+Axror                       
+
+http://eyuf.zetsoft.uz/guest/main-common/main.aspx
+---------------------------------------------------------------------------------------
+
+main-market
+
+# market card, top product, slider news & others+, category menu+, breadcrumb
+?marketId=14
+# Главная страница | Korzinka.uz
+https://www.aliexpress.com/store/1392990?spm=a2g0o.productlist.0.0.4b6517beATAUiI
+
+
+Azizjon
+Levon
+
+http://eyuf.zetsoft.uz/guest/main-market/main.aspx
+
+--------------------------------------------------------------------------------------
+
+filter-common
+
+?categoryId=14
+
+# common card, filtering, category menu is hidden, ali cateogry filter, breadcrumb
+
+# Продукты по категориям {categoryName} | MarketPlace
+https://www.aliexpress.com/af/category/205838503.html?categoryBrowse=y&origin=n&CatId=205838503&spm=2114.best.103.4.4375SrjNSrjNXe&catName=iphones&_ga=2.108322752.359473943.1592300454-768451001.1592300454
+
+Holmat
+Azimjon
+
+http://eyuf.zetsoft.uz/guest/filter-common/main.aspx
+---------------------------------------------------------------------------------------
+
+filter-market
+
+# market card, filtering, category menu is hidden, ali cateogry filter, breadcrumb
+?marketId=14&categoryId=14
+# Продукты по категориям {categoryName} | MarketPlace
+https://www.aliexpress.com/store/group/Recommed/1392990_517206203.html?spm=a2g0o.store_home.pcShopHead_12423503.1_1
+
+
+joxongir
+Ulugbek
+
+http://eyuf.zetsoft.uz/guest/filter-market/main.aspx
+
+---------------------------------------------------------------------------------------
+
+product-single
+
+# tabs, category menu is hidden, information, characteristics, prices, etc, company prices
+?productId=2424
+# https://market.yandex.ru/product--smartfon-xiaomi-redmi-note-8t-4-64gb/630030594?track=tabs
+# https://market.yandex.ru/product--smartfon-xiaomi-redmi-note-8t-4-64gb/630030594/offers?track=tabs&local-offers-first=0
+
+Abdulloh
+Dilshod
+Jovohir
+
+http://eyuf.zetsoft.uz/guest/product-single/map.aspx
+http://eyuf.zetsoft.uz/guest/product-single/monitoring.aspx
+http://eyuf.zetsoft.uz/guest/product-single/questions-answers.aspx
+http://eyuf.zetsoft.uz/guest/product-single/review.aspx
+http://eyuf.zetsoft.uz/guest/product-single/price.aspx
+http://eyuf.zetsoft.uz/guest/product-single/characteristics.aspx
+http://eyuf.zetsoft.uz/guest/product-single/common.aspx
+
+---------------------------------------------------------------------------------------
+market-index
+
+# company vertical card, list of all companies
+
+Jamshid
+khisrav
+Behruz
+
+http://eyuf.zetsoft.uz/guest/market-index/main.aspx
+
+---------------------------------------------------------------------------------------
+market-single
+
+?marketId=14
+# tabs, products list such as amazon, market card, information, prices, etc, company prices
+# https://market.yandex.ru/product--smartfon-xiaomi-redmi-note-8t-4-64gb/630030594?track=tabs
+# https://www.amazon.com/s?me=A2FW5MFSBNIL29&marketplaceID=ATVPDKIKX0DER
+# https://www.amazon.com/sp?_encoding=UTF8&asin=B072M34RQC&isAmazonFulfilled=0&isCBA=&marketplaceID=ATVPDKIKX0DER&orderID=&seller=A2FW5MFSBNIL29&tab=&vasStoreID=
+
+shaxzod
+Mirbosit
+---------------------------------------------------------------------------------------
+session-filter
+//filter
+     [
+         "color" => [
+              '0' => 12,
+              '1' => 22,
+         ],
+         "memory" => [
+              '0' => 12,
+              '1' => 22,
+         ]
+     ]
+
+
+
+session-compare
+[1, 2, 3] product_id
+http://eyuf.zetsoft.uz/guest/session-compare/main.aspx  ++
+
+session-basket
+[1, 2, 3] catalog_id
+http://eyuf.zetsoft.uz/guest/session-basket/main.aspx ++
+
+
+session-viewed
+[1, 2, 3] product_id
+http://eyuf.zetsoft.uz/guest/session-viewed/main.aspx
+
+session-wish
+[1, 2, 3] product_id
+http://eyuf.zetsoft.uz/guest/session-wish/main.aspx
+
+Dilmurod
+Farruh
+
+---------------------------------------------------------------------------------------
+user-auth
+user-profile
+item-question
+item-review
+---------------------------------------------------------------------------------------
+category-index
+Все категории
+
+sherzod
+Yasin

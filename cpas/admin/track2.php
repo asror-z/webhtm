@@ -1,0 +1,218 @@
+<?php
+
+/**
+ *
+ * @author Jakhongir Kudratov
+ */
+
+use kartik\grid\DataColumn;
+use zetsoft\dbitem\core\WebItem;
+use zetsoft\former\cpas\CpasTrackForm;
+use zetsoft\models\cpas\CpasLand;
+use zetsoft\models\cpas\CpasStreamItem;
+use zetsoft\models\cpas\CpasStreamStats;
+use zetsoft\models\cpas\CpasTracker;
+use zetsoft\system\Az;
+use zetsoft\system\column\ZKDataColumn;
+use zetsoft\system\helpers\ZArrayHelper;
+use zetsoft\system\kernels\ZView;
+use zetsoft\system\kernels\ZWidget;
+use zetsoft\widgets\ajaxify\ZIntercoolerWidget;
+use zetsoft\widgets\blocks\ZNProgressWidget;
+use zetsoft\widgets\former\ZDynaWidget;
+use zetsoft\widgets\former\ZDynaWidget1;
+use zetsoft\widgets\former\ZDynaWidget_J_;
+use zetsoft\widgets\inputes\ZHInputWidget;
+use zetsoft\widgets\inputes\ZInputWidget;
+use zetsoft\widgets\inputes\ZKDateRangePickerWidget_J;
+use zetsoft\widgets\inputes\ZKDateTimePickerWidget;
+use zetsoft\widgets\inputes\ZPeriodPickerWidget;
+use zetsoft\widgets\navigat\ZButtonWidget;
+use zetsoft\widgets\notifier\ZSessionGrowlWidget;
+
+
+/** @var ZView $this */
+
+
+/**
+ *
+ * Action Params
+ */
+
+$action = new WebItem();
+
+$action->title = Azl . 'Контроль заказа';
+$action->icon = 'fa fa-globe';
+$action->type = WebItem::type['html'];
+$action->csrf = true;
+$action->debug = true;
+
+
+$this->paramSet(paramAction, $action);
+
+$this->title();
+$this->toolbar();
+
+
+/**
+ *
+ * Start Page
+ */
+
+$this->beginPage();
+?>
+<!DOCTYPE html>
+<html lang="<?= Yii::$app->language ?>">
+<head>
+
+    <?php
+
+    require Root . '/webhtm/block/metas/main.php';
+    require Root . '/webhtm/block/assets/App/main_arbit.php';
+
+    $this->head();
+
+    ?>
+
+</head>
+
+
+<body class="<?= ZWidget::skin['white-skin'] ?>">
+
+<?php
+
+$this->beginBody();
+
+echo $this->require('\webhtm\cpas\blocks\header.php');
+
+
+?>
+
+<div id="page">
+
+    <?
+
+    echo ZSessionGrowlWidget::widget(); ?>
+
+    <div id="content" class="content-footer p-3">
+
+        <div class="row">
+            <div class="mt-2 bg-white d-block py-3 px-1 w-100">
+                <h2 class="text-muted"><?= Az::l('Контроль заказа') ?></h2>
+                <div>
+                    <a href="/cpas/admin/statistic.aspx" style="font-size: small"><?= Az::l('Главная') ?></a>
+                    <span style="font-size: small">/ <?= Az::l('Контроль заказа') ?></span>
+                </div>
+            </div>
+            <div class="mt-5 col-md-12 col-12">
+
+                <?php
+
+                $items = collect(CpasStreamItem::find()->all());
+                $users = collect(\zetsoft\models\user\User::find()->all());
+
+
+                $model = new CpasTracker();
+
+                $model->configs->query = CpasTracker::find()
+                    ->where(['not',[
+                        'contact_name' => null
+                    ]])
+                    ->orderBy([
+                        'id' => SORT_DESC
+                    ]);
+
+                $model->configs->changeSave = false;
+                $model->configs->filterWidget = [
+                    'created_at' => ZKDateRangePickerWidget_J::class
+                ];
+
+                $model->configs->nameOn = [
+                    'id',
+                    'user_id',
+                    'created_at',
+                    'cpas_stream_item_id',
+                    'contact_name',
+                    'contact_phone',
+                    'shop_order_id',
+                    'status',
+
+                ];
+
+                /*$model->configs->after = [
+                    'created_at' => [
+                        [
+                            'class' => ZKDataColumn::class,
+                            'header' => Az::l('User'),
+                            'width' => '100px',
+                            'format' => 'html',
+                            //'attribute' => 'email',
+                            'mergeHeader' => false,
+                            'filter' => true,
+                            'filterType' => ZHInputWidget::class,
+
+                            'value' => static function ($tracker, $key, $index, DataColumn $dataColumn) use ($items, $users) {
+
+                                $item = $items->where(
+                                    'id', ZArrayHelper::getValue($tracker, 'cpas_stream_item_id')
+                                )->first();
+
+                                if (!$item)
+                                    return null;
+
+                                $user = $users->where(
+                                    'id', $item->user_id
+                                )->first();
+
+                                if ($user)
+                                    return '<span class="">' . $user->email . '</span>';
+
+                                return null;
+
+                            }
+                        ],
+
+
+
+                    ],
+
+                ];*/
+
+
+               /* $model->configs->readonly = [
+                    'id',
+                    'created_at',
+                    'cpas_stream_item_id',
+                    'contact_name',
+                    'contact_phone',
+                    'shop_order_id',
+                ];*/
+
+
+                $model->columns();
+
+                echo ZDynaWidget_J_::widget([
+                    'model' => $model,
+                    
+                ])
+
+                ?>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<? echo $this->require('\webhtm\cpas\blocks\footer.php'); ?>
+
+<?php $this->endBody() ?>
+
+</body>
+</html>
+
+<?php $this->endPage() ?>

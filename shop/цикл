@@ -1,0 +1,11 @@
+#1 Shop-Orders
+Role: Agent
+
+Statusi 'Новый' bogan orderlaga call center tel qilib
+
+-buttons:
+  -Договор заказа (Word)
+  -Передать на комплектацию (bosilganida statusi 'В ожидании комплектации' ozgaradi)
+
+========================================================================================
+
