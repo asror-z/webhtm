@@ -72,22 +72,22 @@ $offerPhoto = $offer->photo;
                     </a>-->
 
                     <?
-                    echo ZButtonWidget::widget([
-                        'config' => [
-
-                            'btnStyle' => 'card-flow-btn--trash',
-                            'icon' => 'fal fa-trash',
-                            'btn' => false,
-                            'btnRounded' => false,
-                            'hasConfirm' => true,
-                        ],
-                        'event' => [
-                            'confirmEvent' => <<<JS
-                window.location.href = '$delaction';
-JS,
-
-                        ]
-                    ]);
+//                    echo ZButtonWidget::widget([
+//                        'config' => [
+//
+//                            'btnStyle' => 'card-flow-btn--trash',
+//                            'icon' => 'fal fa-trash',
+//                            'btn' => false,
+//                            'btnRounded' => false,
+//                            'hasConfirm' => true,
+//                        ],
+//                        'event' => [
+//                            'confirmEvent' => <<<JS
+//                window.location.href = '$delaction';
+//JS,
+//
+//                        ]
+//                    ]);
                     ?>
                 </div>
             </div>
@@ -112,31 +112,17 @@ JS,
 
                     <table class="table table-hover text-center table-borderless">
                         <thead>
+                        <th><?= Az::l('Ид элемента')?></th>
                         <th><?= Az::l('Название')?></th>
-                        <th><?= Az::l('Трекинг ссылка')?></th>
                         </thead>
                         <tbody class="text-dark font-weight-bold">
                         <?php
                         foreach ($items as $item)
                         {
-
-                            $url = $item->track;
-                            $button =  ZButtonWidget::widget([
-                                'config' => [
-                                    'url' => $url,
-                                    'title' => Az::l('Трекинг ссылка'),
-                                    'hasIcon' => true,
-                                    'isPjax' => false,
-                                    'pjax' => false,
-                                    'icon' => 'fal fa-external-link',
-                                    'btn' => false,
-                                    'target' => ZButtonWidget::target['_blank'],
-                                ]
-                            ]);
                             ?>
                             <tr>
-                                <th class="text-dark"><?= $item->title?></th>
-                                <td><?= $button?></td>
+                                <th class="text-dark"><?= $item->id?></th>
+                                <td><?= $item->title?></td>
                             </tr>
                             <?php
                         }

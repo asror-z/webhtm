@@ -119,7 +119,6 @@ echo $this->require( '\webhtm\cpas\blocks\header.php');
                             'place_country_id',
                             'name',
                             'cpas_offer_id'
-
                         ],
                         'relatedModelNamesEx' => [
                             'created_at',

@@ -52,11 +52,11 @@ $this->beginPage();
     // require Root . '/webhtm/block/assets/main.php';
 
     $this->head();
-    $this->fileCss('/render/grapeAssets/assetsSneky/vendori/bootstrap/bootstrap.min.css');
-    $this->fileCss('/render/grapeAssets/assetsSneky/vendori/themify-icons/themify-icons.css');
-    $this->fileCss('/render/grapeAssets/assetsSneky/vendori/owl-carousel/owl.theme.default.min.css');
-    $this->fileCss('/render/grapeAssets/assetsSneky/vendori/owl-carousel/owl.carousel.min.css');
-    $this->fileCss('/render/grapeAssets/assetsSneky/vendori/Magnific-Popup/magnific-popup.css');
+    $this->fileCss('/render/grapeAssets/assetsSneky/vendors/bootstrap/bootstrap.min.css');
+    $this->fileCss('/render/grapeAssets/assetsSneky/vendors/themify-icons/themify-icons.css');
+    $this->fileCss('/render/grapeAssets/assetsSneky/vendors/owl-carousel/owl.theme.default.min.css');
+    $this->fileCss('/render/grapeAssets/assetsSneky/vendors/owl-carousel/owl.carousel.min.css');
+    $this->fileCss('/render/grapeAssets/assetsSneky/vendors/Magnific-Popup/magnific-popup.css');
     $this->fileCss('/render/grapeAssets/assetsSneky/css/style.css');
 
 
@@ -114,15 +114,15 @@ echo ZNProgressWidget::widget([]);
 
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-<script src="/render/grapeAssets/assetsSneky/vendori/bootstrap/bootstrap.bundle.min.js"></script>
-<script src="/render/grapeAssets/assetsSneky/vendori/owl-carousel/owl.carousel.min.js"></script>
-<script src="/render/grapeAssets/assetsSneky/vendori/nice-select/jquery.nice-select.min.js"></script>
-<script src="/render/grapeAssets/assetsSneky/vendori/Magnific-Popup/jquery.magnific-popup.min.js"></script>
+<script src="/render/grapeAssets/assetsSneky/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="/render/grapeAssets/assetsSneky/vendors/owl-carousel/owl.carousel.min.js"></script>
+<script src="/render/grapeAssets/assetsSneky/vendors/nice-select/jquery.nice-select.min.js"></script>
+<script src="/render/grapeAssets/assetsSneky/vendors/Magnific-Popup/jquery.magnific-popup.min.js"></script>
 <script src="/render/grapeAssets/assetsSneky/js/jquery.ajaxchimp.min.js"></script>
 <script src="/render/grapeAssets/assetsSneky/js/mail-script.js"></script>
 <script src="/render/grapeAssets/assetsSneky/js/main.js"></script>
 <script src="/render/grapeAssets/assetsSneky/js/popper.min.js"></script>
-<script src="/render/grapeAssets/assetsSneky/vendori/bootstrap/bootstrap.min.js"></script>
+<script src="/render/grapeAssets/assetsSneky/vendors/bootstrap/bootstrap.min.js"></script>
 
 <?php $this->endBody() ?>
 

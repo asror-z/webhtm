@@ -68,6 +68,7 @@ $addbtn = ZButtonWidget::widget([
 
         <div class="card-header card-offer-header col-md-12 bg-white">
             <div class="d-flex">
+
                 <h5 class="ml-2"><?= $model->title?></h5>
 
                 <div class="btn-group ml-auto" role="group">
@@ -84,6 +85,7 @@ $addbtn = ZButtonWidget::widget([
                     </a>-->
                 </div>
             </div>
+          <p class="ml-2">Ид товара: <?php echo $model->catalog?></p><br/>
         </div>
 
         <div class="card-body">
@@ -160,17 +162,17 @@ $addbtn = ZButtonWidget::widget([
                 </div>
                 <div class="col-md-2">
                     <h6 class="text-muted"><?= Az::l('Время работы КЦ')?></h6>
-                    <?= $model->work_time_end ?>
+                    <?= $model->work_time_start ?> - <?= $model->work_time_end ?>
                 </div>
                 <div class="col-md-2">
                     <h6 class="text-muted"><?= Az::l('По API')?></h6>
                     <?
                     echo Az::l('Да');
 
-                    /* if ($model->api)
-                         echo Az::l('Да');
-                     else
-                         echo Az::l('Нет')*/
+//                     if ($model->api)
+//                         echo Az::l('Да');
+//                     else
+//                         echo Az::l('Нет')
 
 
                      ?>

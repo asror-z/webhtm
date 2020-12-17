@@ -5,6 +5,7 @@ use rmrevin\yii\fontawesome\FA;
 use zetsoft\models\page\PageView;
 use zetsoft\system\Az;
 use zetsoft\widgets\incores\ZMCheckboxWidget;
+use zetsoft\widgets\inputes\ZIconPickerWidget;
 use zetsoft\widgets\inputes\ZInputWidget;
 use zetsoft\widgets\inputes\ZKSelect2Widget;
 use zetsoft\widgets\navigat\ZButtonWidget;
@@ -182,7 +183,7 @@ JS,
                                 <span class="iconn"><i id="ico" class="fab fa-font-awesome iconn wrift"></i></span>
 
                                 <?php
-                                echo ZInputWidget::widget([
+                                echo ZIconPickerWidget::widget([
                                     'id' => 'icon_value',
                                     'name' => 'icon',
                                     'config' => [

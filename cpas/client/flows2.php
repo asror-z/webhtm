@@ -29,8 +29,8 @@ $action = new WebItem();
 $action->title = Azl . 'Потоки';
 $action->icon = 'fa fa-globe';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 
@@ -90,7 +90,7 @@ echo $this->require( '\webhtm\cpas\blocks\header.php');
 
                     $model = new CpasStream();
 
-                    $model->configs->query = CpasStream::find()
+                    $model->query = CpasStream::find()
                         ->where([
                             'user_id' =>$this->userIdentity()->id
                         ])

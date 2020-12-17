@@ -42,8 +42,8 @@ $action = new WebItem();
 $action->title = Azl . 'Офферы';
 $action->icon = 'fa fa-globe';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 
@@ -185,7 +185,7 @@ echo $this->require( '/webhtm/cpas/blocks/header.php');
             $item_ids = ZArrayHelper::map($items, 'id', 'id');
 
             $newModel = new CpasLand();
-            $newmodel->configs->query = CpasLand::find()
+            $newModel->query = CpasLand::find()
                 ->where([
                     'cpas_offer_item_id' =>  $item_ids
                 ]);

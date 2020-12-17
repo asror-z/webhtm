@@ -83,9 +83,7 @@ $this->beginPage();
 
 $this->beginBody();
 
-echo $this->require( '\webhtm\cpas\blocks\header.php');
-
-
+//echo $this->require( '\webhtm\cpas\blocks\header.php');
 
 ?>
 
@@ -133,13 +131,9 @@ echo $this->require( '\webhtm\cpas\blocks\header.php');
 
                     $this->activeEnd();
 
-
-
-
-
                     if ($this->modelSave($model)) {
 
-                        //$this->paramSet(paramIframe, true);
+                        $this->paramSet(paramIframe, true);
 
                         $url = ZUrl::to([
                             '/cpas/admin/company',
@@ -155,7 +149,7 @@ echo $this->require( '\webhtm\cpas\blocks\header.php');
     </div>
 </div>
 
-<? echo $this->require( '\webhtm\cpas\blocks\footer.php'); ?>
+<?// echo $this->require( '\webhtm\cpas\blocks\footer.php'); ?>
 
 <?php $this->endBody() ?>
 </body>

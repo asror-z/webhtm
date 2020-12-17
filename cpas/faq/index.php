@@ -29,8 +29,6 @@ $action = new WebItem();
 $action->title = Azl . 'Faq';
 $action->icon = 'fa fa-laptop';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
 
 
 

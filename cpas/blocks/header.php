@@ -9,6 +9,7 @@ use zetsoft\system\helpers\ZJsonHelper;
 
 echo ZSessionGrowlWidget::widget();
 echo ZNProgressWidget::widget([]);
+/** @var \zetsoft\system\kernels\ZView $this */
 
 ?>
 
@@ -18,17 +19,20 @@ echo ZNProgressWidget::widget([]);
             <li class="nav-item">
                 <a class="nav-link menupush" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
+          <?php  if(!$this->userIsGuest() && !($this->userIdentity()->role === 'admin')){?>
             <li class="nav-item">
                 <a href="#" class="nav-link cash-link">
                     <i class="fal fa-wallet cash-icon"></i>
                 </a>
             </li>
             <?php
-            if(!$this->userIsGuest()){
                 require Root . '/webhtm/cpas/client/balance.php';
             }
             ?>
         </ul>
+      <ul class="navbar-nav text-center">
+        <li class="nav-item nav-link">Менеджер: Шохрух <a href="https://t.me/shox1810" target="_blank" class="text-blue">телеграм</a></li>
+      </ul>
 
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">

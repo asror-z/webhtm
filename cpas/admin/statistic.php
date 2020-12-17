@@ -31,8 +31,8 @@ $action = new WebItem();
 $action->title = Azl . 'Cтатистика';
 $action->icon = 'fa fa-globe';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 
@@ -86,11 +86,12 @@ echo $this->require( '\webhtm\cpas\blocks\header.php');
     <div id="content" class="content-footer p-3">
 
         <div class="row">
+          <a href="users.aspx" class="btn btn-primary">Баланс клиентов</a>
             <?php
                 
                 //start|JakhongirKudratov
 
-                $users = collect(\zetsoft\models\user\User::find()->all());
+                $users = collect(\zetsoft\models\user\User::find()->where(['role' => 'client'])->all());
                 $model = new CpasTrackForm();
                 $model->configs->nameOn = [
                     'user',
@@ -145,7 +146,7 @@ echo $this->require( '\webhtm\cpas\blocks\header.php');
                     ]
                 ];
                 $model->columns();
-                $data = Az::$app->cpas->cpasStats->generateAdminStats();
+                $data = Az::$app->cpas->cpasStats->generateAdminStats($users);
                 echo ZDynaWidget::widget([
                 'data' => $data,
                 'model' => $model,
@@ -172,7 +173,7 @@ echo $this->require( '\webhtm\cpas\blocks\header.php');
                     ],
 
                     'export' => [
-                        'content' => '{jsonExcel}',
+                        'content' => '{export}',
                         'options' => ['class' => 'btn-group p-1 {btnSize} {iconSize}']
                     ],
                     'filter-sort-id' => [

@@ -7,6 +7,7 @@ use zetsoft\models\cpas\CpasLand;
 use zetsoft\models\cpas\CpasStream;
 use zetsoft\models\cpas\CpasWidgets;
 use zetsoft\models\shop\ShopBrand;
+use zetsoft\service\forms\Active;
 use zetsoft\system\assets\ZColor;
 use zetsoft\system\Az;
 use zetsoft\system\helpers\ZUrl;
@@ -41,8 +42,8 @@ $action = new WebItem();
 $action->title = Azl . 'Создание Бренды';
 $action->icon = 'fa fa-globe';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 
@@ -104,7 +105,9 @@ echo $this->require( '\webhtm\cpas\blocks\header.php');
                 <div class="col-md-12">
                     <?
 
-                    $form = $this->activeBegin();
+                    $active = new Active();
+                    $active->type = Active::type['horizontal'];
+                    $form = $this->activeBegin($active);
                     $model = new CpasOffer();
                     $model->configs->nameOff = [
                         'id',
@@ -112,6 +115,7 @@ echo $this->require( '\webhtm\cpas\blocks\header.php');
                     ];
                     $model->configs->hasLabel = false;
                     $model->columns();
+                    $model->status = 'new';
                     //$this->modelSave($model);
                     echo ZFormBuildWidget::widget([
                         'model' => $model,
@@ -140,9 +144,8 @@ echo $this->require( '\webhtm\cpas\blocks\header.php');
                     $url = ZUrl::to([
                         '/cpas/admin/offer',
                     ]);
+
                     if ($this->modelSave($model)) {
-                        $model->status = 'new';
-                        $model->save();
                         return $this->urlRedirect($url);
                     }
                     ?>

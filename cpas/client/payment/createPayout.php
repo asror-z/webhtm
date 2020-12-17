@@ -42,7 +42,6 @@ if ($this->httpGet('spa'))
     $action->debug = false;
 
 
-
 $this->paramSet(paramAction, $action);
 
 $this->title();
@@ -53,6 +52,7 @@ $this->toolbar();
  * Start Page
  */
 
+
 $this->beginPage();
 ?>
 <!DOCTYPE html>
@@ -62,138 +62,130 @@ $this->beginPage();
     <?php
 
     require Root . '/webhtm/block/metas/main.php';
-    require Root . '/webhtm/block/assets/main.php';
+    require Root . '/webhtm/block/assets/App/main_arbit.php';
 
     $this->head();
 
     ?>
 
+
 </head>
 
 
-<body class="<?= ZWidget::skin['white-skin'] ?>">
+<body class="hold-transition sidebar-mini">
 
 <?php
 
 $this->beginBody();
 
+echo $this->require('\webhtm\cpas\blocks\header.php');
+
 echo ZNProgressWidget::widget([]);
-if (!$this->httpGet('spa'))
-    echo ZMmenuWidget::widget();
+
 ?>
 
 <div id="page">
 
     <?
 
-    if (!$this->httpGet('spa'))
-        require Root . '/webhtm/block/navbar/admin.php';
 
-    echo ZSessionGrowlWidget::widget();?>
+    echo ZSessionGrowlWidget::widget(); ?>
 
-    <div id="content" class="content-footer p-3">
+  <div id="content" class="content-footer p-3">
 
-        <div class="row">
-            <div class="col-md-12 col-12">
+    <div class="row">
+      <div class="col-md-12 col-12">
 
-                <?
-                $message = Az::l('Пожалуйста, введите свои платежные системы');
-                $pays = PaysPayment::find()
-                    ->where([
-                        'user_id' => $this->userIdentity()->id
-                    ])
-                    ->all();
+          <?
+          $message = Az::l('Пожалуйста, введите свои платежные системы');
+          $pays = PaysPayment::find()
+              ->where([
+                  'user_id' => $this->userIdentity()->id
+              ])
+              ->all();
 
-                if (!$pays)
-                    echo $message;
-                else
-                {
-                
-                //vdd($payment);
-                $model= new PaysWithdraw();
-                $model->user_id = $this->userIdentity()->id;
-                $model->status = PaysWithdraw::status['hold'];
-                $model->configs->readonlyWidget = [
-                    'user_id'
-                ];
-                /*$model->configs->nameOn = [
-                        'user_id',
-                        'amount',
-                        'pays_payment_id'
-                ];*/
-                $model->cards = [
-                    [
-                        'title' => Az::l('Первый этап'),
-                        'shows' => true,
-                        'items' => [
-                            [
-                                'title' => Az::l('Форма'),
-                                'shows' => true,
-                                'items' => [
-                                        ['user_id',],
-                                        ['amount'],
-                                        ['pays_payment_id'],
-                                        []
-                                ],
-                            ],
-                        ],
-                    ],
-                ];
+          if (!$pays)
+              echo $message;
+          else {
 
-                $model->columns();
-                $active = new Active();
+              //vdd($payment);
+              $model = new PaysWithdraw();
+              $model->user_id = $this->userIdentity()->id;
+              $model->status = PaysWithdraw::status['hold'];
+              $model->configs->readonlyWidget = [
+                  'user_id'
+              ];
+              /*$model->configs->nameOn = [
+                      'user_id',
+                      'amount',
+                      'pays_payment_id'
+              ];*/
+              $model->cards = [
+                  [
+                      'title' => Az::l('Заказать выплату'),
+                      'shows' => true,
+                      'items' => [
+                          [
+                              'title' => Az::l('Форма'),
+                              'shows' => true,
+                              'items' => [
 
-                $form = $this->activeBegin($active);
+                                  ['amount'],
+                                  ['pays_payment_id'],
+                                  []
+                              ],
+                          ],
+                      ],
+                  ],
+              ];
 
-                $isCard = ZFormBuildWidget::stepType['card'];
+              $model->columns();
 
+              $active = new Active();
+              $active->type = Active::type['horizontal'];
+              $form = $this->activeBegin($active);
 
-                echo ZFormBuildWidget::widget([
-                    'model' => $model,
-                    'form' => $form,
-                    'config' => [
-                        'stepType' => $isCard,
-                        'isStepsVertical' => false,
-                        'topBtn' => false,
+              $isCard = ZFormBuildWidget::stepType['card'];
 
-                    ]
-                ]);
+              echo ZFormBuildWidget::widget([
+                  'model' => $model,
+                  'form' => $form,
+                  'config' => [
+                      'stepType' => $isCard,
+                      'isStepsVertical' => false,
+                      'topBtn' => false,
 
-                $this->activeEnd();
-                if ($this->modelSave($model)) {
-                   /*$model->status = PaysWithdraw::status['hold'];
-                   $model->configs->rules = [
-                        [
-                            validatorSafe
-                        ]
-                   ];
-                   $model->save();*/
-                    $this->paramSet(paramIframe, true);
-                    $this->urlRedirect([
-                        $this->prelastUrl() . '/payout',
-                        'sort' => '-id',
-                    ]);
-                }
-
-                }
-
-                ?>
-
-            </div>
-        </div>
+                  ]
+              ]);
+              if ($this->modelSave($model)) {
+                  /*$model->status = PaysWithdraw::status['hold'];
+                  $model->configs->rules = [
+                       [
+                           validatorSafe
+                       ]
+                  ];
+                  $model->save();*/
+//                    $this->paramSet(paramIframe, true);
+                  $this->urlRedirect([
+                      $this->prelastUrl() . '/payout',
+                      'sort' => '-id',
+                  ]);
+              }
+              $this->activeEnd();
 
 
+          }
+
+          ?>
+
+      </div>
     </div>
-    <?
-
-    if (!$this->httpGet('spa'))
-    //        $this->require( '\webhtm\block\footer\mplace\footerAll.php')
-
-    ?>
-</div>
 
 
-<?php $this->endBody() ?>
+  </div>
+
+    <? echo $this->require('\webhtm\cpas\blocks\footer.php'); ?>
+    <?php $this->endBody() ?>
 
 </body>
 </html>

@@ -49,8 +49,8 @@ $action = new WebItem();
 $action->title = Azl . 'Управление компании';
 $action->icon = 'fa fa-globe';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 
@@ -185,7 +185,7 @@ echo $this->require( '\webhtm\cpas\blocks\header.php');
                     ],
                     'spaArray' => [
                         'update' => false,
-                        //'create' => false
+                        'create' => true
                     ],
                     
                     'columnAfter'=> false,

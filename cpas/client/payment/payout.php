@@ -48,8 +48,8 @@ $action = new WebItem();
 $action->title = Azl . 'Заказать выплату';
 $action->icon = 'fa fa-globe';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 
@@ -105,7 +105,7 @@ echo ZNProgressWidget::widget([]);
                 <span style="font-size: small">/ Заказать выплату</span>
             </div>
         </div>
-
+        <h3 class="text-danger text-center">Минимальная сумма выплаты - 50$</h3>
         <div class="mt-2">
 
             <?php
@@ -123,7 +123,7 @@ echo ZNProgressWidget::widget([]);
             $payment = PaysPayment::find()->where(['user_id' => $user_id])->one();
             $model = new \zetsoft\models\pays\PaysWithdraw();
 
-                $model->configs->query = PaysWithdraw::find()
+                $model->query = PaysWithdraw::find()
                     ->where([
                         'user_id' => $user_id
                     ]);
@@ -174,7 +174,9 @@ echo ZNProgressWidget::widget([]);
 
 
                 'config' => [
-
+                    'spaArray' => [
+                        'create' => false
+                    ],
                     'pjax' => false,
                     'search' => false,
 

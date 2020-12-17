@@ -36,8 +36,8 @@ $action = new WebItem();
 $action->title = Azl . 'Создать новый поток';
 $action->icon = 'fa fa-globe';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 
@@ -55,7 +55,7 @@ $this->toolbar();
 $this->beginPage();
 ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html lang="<?= Az::$app->language ?>">
 <head>
 
     <?php
@@ -168,13 +168,10 @@ echo ZNProgressWidget::widget([]);
 
 
 
-
+                        $this->activeEnd();
+                        #endregion
                         if ($this->modelSave($stream)) {
 
-                            $stream->cpas_offer_id = $id;
-                            $stream->user_id = $this->userIdentity()->id;
-
-                            $stream->save();
                             $url = ZUrl::to([
                                 '/cpas/client/createNewAll',
                                 'model' => $stream->className,
@@ -184,11 +181,6 @@ echo ZNProgressWidget::widget([]);
                             return $this->urlRedirect($url);
 
                         }
-
-
-                        $this->activeEnd();
-                        #endregion
-
 
                         ?>
                     </div>

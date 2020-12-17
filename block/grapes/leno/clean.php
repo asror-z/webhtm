@@ -52,13 +52,13 @@ $this->beginPage();
     // require Root . '/webhtm/block/assets/main.php';
 
     $this->head();
-    $this->fileCss('/render/grapeAssets/assetsSneky/vendori/bootstrap/bootstrap.min.css');
-    $this->fileCss('/render/grapeAssets/assetsSneky/vendori/themify-icons/themify-icons.css');
-    $this->fileCss('/render/grapeAssets/assetsSneky/vendori/owl-carousel/owl.theme.default.min.css');
-    $this->fileCss('/render/grapeAssets/assetsSneky/vendori/owl-carousel/owl.carousel.min.css');
-    $this->fileCss('/render/grapeAssets/assetsSneky/vendori/Magnific-Popup/magnific-popup.css');
+    $this->fileCss('/render/grapeAssets/assetsSneky/vendors/bootstrap/bootstrap.min.css');
+    $this->fileCss('/render/grapeAssets/assetsSneky/vendors/themify-icons/themify-icons.css');
+    $this->fileCss('/render/grapeAssets/assetsSneky/vendors/owl-carousel/owl.theme.default.min.css');
+    $this->fileCss('/render/grapeAssets/assetsSneky/vendors/owl-carousel/owl.carousel.min.css');
+    $this->fileCss('/render/grapeAssets/assetsSneky/vendors/Magnific-Popup/magnific-popup.css');
     $this->fileCss('/render/grapeAssets/assetsSneky/css/style.css');
-    $this->fileCss('/render/grapeAssets/assetsSneky/vendori/fontawesome/css/all.min.css');
+    $this->fileCss('/render/grapeAssets/assetsSneky/vendors/fontawesome/css/all.min.css');
 
 
 

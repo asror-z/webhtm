@@ -27,8 +27,8 @@ $action = new WebItem();
 $action->title = Azl . 'Вход | Регистрация';
 $action->icon = 'fa fa-area-chart';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 

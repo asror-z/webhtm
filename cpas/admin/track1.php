@@ -105,8 +105,8 @@ echo $this->require('\webhtm\cpas\blocks\header.php');
 
                 <?php
 
-//                $items = collect(CpasStreamItem::find()->all());
-//                $users = collect(\zetsoft\models\user\User::find()->all());
+                $items = collect(CpasStreamItem::find()->all());
+                $users = collect(\zetsoft\models\user\User::find()->all());
 
 
                 $model = new CpasTracker();

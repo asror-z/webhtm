@@ -17,8 +17,8 @@ $action = new WebItem();
 $action->title = Azl . 'Вход | Регистрация';
 $action->icon = 'fa fa-area-chart';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 
@@ -82,7 +82,7 @@ $this->beginBody();
                 $content = [];
                 foreach ($items as $key => $value) {
                     $tabItem = new TabItem();
-                    $tabItem->title = $key;
+                    $tabItem->label = $key;
                     $tabItem->content = $value;
                     $content[] = $tabItem;
                 }

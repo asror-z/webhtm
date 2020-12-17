@@ -94,13 +94,8 @@ echo $this->require('\webhtm\cpas\blocks\header.php');
     <div id="content" class="content-footer p-3">
 
         <div class="row">
-            <div class="mt-2 bg-white d-block py-3 px-1 w-100">
-                <h2 class="text-muted"><?= Az::l('Контроль заказа') ?></h2>
-                <div>
-                    <a href="/cpas/admin/statistic.aspx" style="font-size: small"><?= Az::l('Главная') ?></a>
-                    <span style="font-size: small">/ <?= Az::l('Контроль заказа') ?></span>
-                </div>
-            </div>
+          <a href="/cpas/client/statistic.aspx"><button type="button" class="btn btn-primary"><?= Az::l('Статистика')?></button></a>
+          <button type="button" class="btn btn-primary" disabled><?= Az::l('Конверсии')?></button>
             <div class="mt-5 col-md-12 col-12">
 
                 <?php
@@ -114,7 +109,7 @@ echo $this->require('\webhtm\cpas\blocks\header.php');
                 $model->query = CpasTracker::find()
                     ->where(['not',[
                         'contact_name' => null
-                    ]])
+                    ]])->andWhere(['user_id' => $this->userIdentity()->id])
                     ->orderBy([
                         'id' => SORT_DESC
                     ]);
@@ -126,7 +121,7 @@ echo $this->require('\webhtm\cpas\blocks\header.php');
                     'id',
                     'created_at',
                     'cpas_offer_id',
-                    'user_id',
+//                    'user_id',
                     'cpas_stream_item_id',
                     'contact_name',
                     'contact_phone',

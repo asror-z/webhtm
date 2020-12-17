@@ -29,8 +29,8 @@ $action = new WebItem();
 $action->title = Azl . 'Создание Бренды';
 $action->icon = 'fa fa-globe';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 
@@ -63,17 +63,17 @@ $modelClass = $this->bootFull($modelClassName);
 
 /** @var Models $model */
 $model = $modelClass::findOne($id);
-
-$modelId = $model->id;
-$modelItems = \zetsoft\models\cpas\CpasStreamItem::find()->where(['cpas_stream_id' => $modelId])->all();
-foreach ($modelItems as $item){
-    $item->delete();
+if($model) {
+    $modelId = $model->id;
+    $modelItems = \zetsoft\models\cpas\CpasStreamItem::find()->where(['cpas_stream_id' => $modelId])->all();
+    foreach ($modelItems as $item) {
+        $item->delete();
+    }
+    $model->delete();
 }
-$model->delete();
-
 
 // todo remove files from system if model has file column | by AD
-
+return $this->urlRedirect('/cpas/client/flows.aspx');
 if ($model->delete()) {
     $this->notifySuccess('Данные успешно удалены!', $this->modelInfo($model));
 } else

@@ -30,8 +30,8 @@ $action = new WebItem();
 $action->title = Azl . 'Потоки';
 $action->icon = 'fa fa-globe';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 $this->paramSet(paramAction, $action);
@@ -102,7 +102,7 @@ echo $this->require('\webhtm\cpas\blocks\header.php');
                 }
 
                 $model = new CpasStream();
-                $model->configs->query = CpasStream::find()
+                $model->query = CpasStream::find()
                     ->where([
                         'user_id' => $id    
                     ]);
@@ -142,7 +142,7 @@ echo $this->require('\webhtm\cpas\blocks\header.php');
                         //'panelTemplate' => "{items}",
                         'hasItems' => false,
                         'relations' => false,
-                        'relateMulti' => false
+                        'relationMulti' => false
 
                     ]
                 ])

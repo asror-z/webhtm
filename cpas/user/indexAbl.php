@@ -28,8 +28,8 @@ $action = new WebItem();
 $action->title = Azl . 'ArbitPro';
 $action->icon = 'fa fa-pie-chart';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 $action->loader = false;

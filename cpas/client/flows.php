@@ -21,8 +21,8 @@ $action = new WebItem();
 $action->title = Azl . 'Потоки';
 $action->icon = 'fa fa-globe';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 
@@ -78,11 +78,11 @@ echo $this->require( '\webhtm\cpas\blocks\header.php');
             <div class="row">
                 <div class="col-md-12">
                     <?php
-
+//                    vdd($this->userIdentity()->id);
                     $needStreams = Az::$app->cpas->cpa->getStreamsByUser();
                     $user_id = $this->userIdentity()->id;
                     $model = new CpasStream();
-                    $model->configs->query = CpasStream::find()->where(['user_id' => $user_id])
+                    $model->query = CpasStream::find()->where(['user_id' => $user_id])
                         ->orderBy([
                             'id' => SORT_DESC
                         ]);
@@ -106,7 +106,6 @@ echo $this->require( '\webhtm\cpas\blocks\header.php');
 
                         <?php
                     }
-
                     echo ZListViewWidget::widget([
                         'model' => $model,
                         'config' => [

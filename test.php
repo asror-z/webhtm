@@ -11,6 +11,7 @@
 
 
 use zetsoft\dbitem\core\WebItem;
+use zetsoft\models\dyna\DynaImport;
 use zetsoft\models\shop\ShopProduct;
 use zetsoft\models\test\TestTerrabayt;
 use zetsoft\system\kernels\ZView;
@@ -25,7 +26,7 @@ $action->layout = true;
 
 $this->paramSet(paramAction, $action);
 
-$model = new TestTerrabayt();
+$model = new DynaImport();
 
 $this->paramSet(paramTransact, true);
 if ($this->modelSave($model)) {
@@ -34,6 +35,5 @@ if ($this->modelSave($model)) {
 $form = $this->ajaxBegin();
 echo ZFormWidget::widget([
     'model' => $model,
-     'form' => $form
 ]);
 $this->ajaxEnd();

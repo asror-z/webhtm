@@ -131,7 +131,7 @@ $model1 = \zetsoft\models\cpas\CpasStreamItem::find()
     /** @var ZView $this * */
 
     $sites->configs->after = [
-    'title' => [
+        'name' => [
             [
                 'class' => ZKDataColumn::class,
                 'label' => Az::l('Cкачать'),

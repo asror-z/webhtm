@@ -118,11 +118,7 @@ if ($this->formModel($loginForm) === true) {
         <div class="d-flex justify-content-center">
             <div class="col-lg-7 col-md-9 mb-3">
                 <?php
-
-
-
                 echo ZHTML::submitButton(Az::l('<h6 class="m-0">Вход в систему</h6>'), ['class' => 'w-100 btn btn-success']);
-
                 ?>
                 <div class="text-right">
 

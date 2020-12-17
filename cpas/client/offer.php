@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\Html;
 use zetsoft\dbitem\core\WebItem;
 use zetsoft\models\cpas\CpasOffer;
 use zetsoft\system\Az;
@@ -24,8 +25,8 @@ $action = new WebItem();
 $action->title = Azl . 'Офферы';
 $action->icon = 'fa fa-globe';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 $this->paramSet(paramAction, $action);
@@ -70,106 +71,143 @@ echo ZNProgressWidget::widget([]);
 echo $this->require('\webhtm\cpas\blocks\header.php');
 ?>
 <?
-$this->userIdentity()->user_company_id;
+$countries = \zetsoft\models\place\PlaceCountry::find()->select('id,name')->orderBy('name ASC')->asArray()->all();
 
+
+$search = Html::encode($this->httpGet('search'));
 ?>
 <div class="container-fluid">
-    <div class="offers-header">
-        <h2 class="text-muted"><?= Az::l('Офферы')?></h2>
-        <div class="mt-1">
-            <a href="/cpas/client/statistic.aspx" class="offer-header--text"><?= Az::l('Главная')?></a>
-            <span class="offer-nav">/ <?= Az::l('Офферы')?></span>
-        </div>
+  <div class="offers-header">
+    <h2 class="text-muted"><?= Az::l('Офферы') ?></h2>
+    <div class="mt-1">
+      <a href="/cpas/client/statistic.aspx" class="offer-header--text"><?= Az::l('Главная') ?></a>
+      <span class="offer-nav">/ <?= Az::l('Офферы') ?></span>
     </div>
-    <div class="col-md-12">
-        <div class="d-flex flex-wrap">
+  </div>
+  <div class="col-md-12">
+    <div class="d-flex flex-wrap">
 
 
-            <form method="get" class="col-md-9 offer-search d-flex">
-                <input type="text" name="search" class="textbox" placeholder="Искать офферы по названию"
-                       id="searchInput">
-                <input title="Search" value="" type="submit" class="button" id="searchSubmit">
-            </form>
+      <form method="get" class="col-md-9 offer-search d-flex">
+        <select class="browser-default custom-select" id="country" name="country">
+            <?php
+            $all = false;
+            if (!$this->httpGet('country')) {
+                $all = true;
+            } ?>
 
+          <option <?= $all ? 'selected' : '' ?> value="">Все</option>
+            <?php
+            foreach ($countries as $country):
+                $selected = false;
 
-            <div class="col-md-9">
-                <?php
-                $model = new CpasOffer();
-
-                $model->configs->query = CpasOffer::find()
-                    ->where([
-                        '!=', 'status', 'not_accepted'
-                    ])
-                    ->orderBy([
-                        'id' => SORT_DESC
-                    ]);
-
-                echo ZListViewWidget::widget([
-                    'model' => $model,
-                    'config' => [
-                        'type' => ZListViewWidget::type['model'],
-                        'itemView' => function ($model, $key, $index, $widget) {
-                            return $this->require('/webhtm/cpas/client/card.php', [
-                                'id' => ZArrayHelper::getValue($model, 'id')
-                            ]);
-                        },
-                        'layout' => "{items}\n{pager}"
-                    ]
-                ]);
-
+                if ($country['id'] === (int)$this->httpGet('country')) {
+                    $selected = true;
+                }
                 ?>
-            </div>
 
-            <div class="col-md-3 offer-right--panel">
-                <div class="p-3">
-                    <h5 class="right-panel--header"><?= Az::l('Создать поток')?></h5>
-                </div>
+              <option value="<?= $country['id'] ?>" <?= $selected ? 'selected' : '' ?>><?= $country['name'] ?></option>
+            <?php endforeach; ?>
 
-                <div class="p-1">
-                    <div class="px-2">
-                        <h5 class="right-panel--text"><?= Az::l('Офферы')?></h5>
-                        <?
+        </select>
+        <input type="text" name="search" value="<?php echo $search; ?>" class="textbox"
+               placeholder="Искать офферы по названию"
+               id="searchInput">
+        <input title="Search" value="" type="submit" class="button" id="searchSubmit">
+      </form>
 
-                        $offers = CpasOffer::find()->all();
-                        $data = [];
-                        foreach ($offers as $offer) {
-                            $data[$offer->id] = $offer->title;
-                        }
+      <div class="col-md-9">
+        <br>
+          <?php
 
-                        echo ZSelect2Widget::widget([
-                            'data' => $data,
+          if ($search) {
+              $model = CpasOffer::find()
+                  ->where([
+                      '!=', 'status', 'not_accepted'
+                  ])->andWhere(['like', 'title', '%' . $search . '%', false])
+                  ->orWhere(['like', 'title', '%' . ucfirst($search) . '%', false])
+                  ->orderBy([
+                      'id' => SORT_DESC
+                  ])->asArray()->all();
+          } else {
+              $model = CpasOffer::find()
+                  ->where([
+                      '!=', 'status', 'not_accepted'
+                  ])
+                  ->orderBy([
+                      'id' => SORT_DESC
+                  ])->asArray()->all();
+          }
+          $count = 0;
+          foreach ($model as $item) {
+            if($this->httpGet('country')) {
+                if (\zetsoft\models\cpas\CpasOfferItem::find()->where(['cpas_offer_id' => $item['id']])->andWhere(['place_country_id' => (int)$this->httpGet('country')])->exists()) {
+                    echo $this->require('/webhtm/cpas/client/card.php', [
+                        'id' => ZArrayHelper::getValue($item, 'id')
+                    ]);
+//                    $count++;
+                }
+            }else{
+                echo $this->require('/webhtm/cpas/client/card.php', [
+                    'id' => ZArrayHelper::getValue($item, 'id')
+                ]);
+//                $count++;
+            }
+          }
+//          echo "Офферы : " . $count . ' шт.';
+          ?>
+      </div>
 
-                            'config' => [
-                                'placeholder' => Az::l('Выбрать офферы'),
-                                'ajax' => false,
-                            ],
-                            'active' => [
-                                'select' => true
-                            ],
-                            'event' => [
-                                'select' => <<<JS
+      <div class="col-md-3 offer-right--panel">
+        <div class="p-3">
+          <h5 class="right-panel--header"><?= Az::l('Создать поток') ?></h5>
+        </div>
+
+        <div class="p-1">
+          <div class="px-2">
+            <h5 class="right-panel--text"><?= Az::l('Офферы') ?></h5>
+              <?
+
+              $offers = CpasOffer::find()->all();
+              $data = [];
+              foreach ($offers as $offer) {
+                  $data[$offer->id] = $offer->title;
+              }
+
+              echo ZSelect2Widget::widget([
+                  'data' => $data,
+
+                  'config' => [
+                      'placeholder' => Az::l('Выбрать офферы'),
+                      'ajax' => false,
+                  ],
+                  'active' => [
+                      'select' => true
+                  ],
+                  'event' => [
+                      'select' => <<<JS
                 
                          console.log(event.target.value);
                          $('#offerSelecturl').attr('href', '/cpas/client/createFlow.aspx?id='+event.target.value);
                 
 JS,
 
-                            ]
-                        ]);
+                  ]
+              ]);
 
-                        ?>
-                    </div>
-                </div>
+              ?>
+          </div>
+        </div>
 
-                <div class="px-2 pt-1 w-100">
+        <div class="px-2 pt-1 w-100">
 
-                    <a href="#" id="offerSelecturl" class="offer-panel-btn"><?= Az::l('Создать')?></a>
-
-                </div>
-            </div>
+          <a href="#" id="offerSelecturl" class="offer-panel-btn"><?= Az::l('Создать') ?></a>
 
         </div>
+      </div>
+
     </div>
+  </div>
 </div>
 
 

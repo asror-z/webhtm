@@ -135,7 +135,7 @@ vdd($model->user_id);*/
     /** @var ZView $this * */
 
     $sites->configs->after = [
-    'title' => [
+        'name' => [
             [
                 'class' => ZKDataColumn::class,
                 'label' => Az::l('Cкачать'),

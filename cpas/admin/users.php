@@ -38,7 +38,7 @@ use zetsoft\widgets\notifier\ZSessionGrowlWidget;
 
 $action = new WebItem();
 
-$action->title = Azl . 'Контроль заказа';
+$action->title = Azl . 'Ползователи';
 $action->icon = 'fa fa-globe';
 $action->type = WebItem::type['html'];
 $action->csrf = false;
@@ -95,44 +95,34 @@ echo $this->require('\webhtm\cpas\blocks\header.php');
 
         <div class="row">
             <div class="mt-2 bg-white d-block py-3 px-1 w-100">
-                <h2 class="text-muted"><?= Az::l('Контроль заказа') ?></h2>
-                <div>
-                    <a href="/cpas/admin/statistic.aspx" style="font-size: small"><?= Az::l('Главная') ?></a>
-                    <span style="font-size: small">/ <?= Az::l('Контроль заказа') ?></span>
-                </div>
+                <h2 class="text-muted"><?= Az::l('Ползователи') ?></h2>
+
             </div>
             <div class="mt-5 col-md-12 col-12">
-
+              <a href="statistic.aspx" class="btn btn-primary">Общая статистика</a>
                 <?php
 
 //                $items = collect(CpasStreamItem::find()->all());
 //                $users = collect(\zetsoft\models\user\User::find()->all());
 
 
-                $model = new CpasTracker();
+                $model = new \zetsoft\models\user\User();
 
-                $model->query = CpasTracker::find()
-                    ->where(['not',[
-                        'contact_name' => null
-                    ]])
-                    ->orderBy([
-                        'id' => SORT_DESC
-                    ]);
+                $model->query = \zetsoft\models\user\User::find()
+                    ->where(['role' => 'client'])
+                ->orderBy('balance DESC');
 
                 $model->configs->changeSave = false;
-
+                $model->configs->defaultOrder = [
+                    'balance' => SORT_DESC
+                ];
 
                 $model->configs->nameOn = [
-                    'id',
-                    'created_at',
-                    'cpas_offer_id',
-                    'user_id',
-                    'cpas_stream_item_id',
-                    'contact_name',
-                    'contact_phone',
-                    'shop_order_id',
-                    'status',
-
+                    'title',
+                    'phone',
+                    'email',
+                    'balance',
+                    'social',
                 ];
 
                 /*$model->configs->after = [

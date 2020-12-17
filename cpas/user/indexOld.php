@@ -54,7 +54,7 @@ $this->beginPage();
     $this->head();
 
     ?>
-    <link rel="stylesheet" href="/render/cpa/css/main2.css">
+    <link rel="stylesheet" href="/render/asrorz/css/arbit.css">
 
 
 </head>
@@ -64,6 +64,14 @@ $this->beginPage();
 
 
 <?php
+$current_user = $this->userIdentity();
+if($current_user !== null){
+    $role = $current_user->role;
+    switch ($role){
+        case 'admin': return $this->urlRedirect('/cpas/admin/statistic.aspx'); break;
+        case 'client': return $this->urlRedirect('/cpas/client/statistic.aspx'); break;
+    }
+}
 
 $users = User::find()->count();
 $offers = CpasOffer::find()->count();
@@ -82,11 +90,15 @@ $per_offers = CpasOffer::find()
         '>', 'created_at', $now
     ])->count();
 $this->beginBody();
-
+if ($users === 0)
+    $per_u = 0;
+else
 $per_u = number_format($per_users / $users *100, 2);
+if ($offers === 0)
+    $per_o = 0;
+else
 $per_o = number_format($per_offers / $offers *100, 2);
 
-//require Root . '/webhtm/block/navbar/mainArbit.php';;
 
 
 ?>
@@ -110,13 +122,13 @@ $per_o = number_format($per_offers / $offers *100, 2);
 
         <div class="content">
             <div class="container">
-                <div class="tatsu-row">
+                <div class="tatsu-row row">
                     <div class="content-image">
-                        <img src="/render/cpa/images/Zeydoo_ill.png" alt="">
+                        <img src="/render/asrorz/arbit/img/Zeydoo_ill.png" alt="">
                     </div>
                     <div class="content-column">
                         <div class="content-title">
-                            <img src="/render/cpa/images/shield_top.png" alt="">
+<!--                            <img src="/render/asrorz/arbit/img/shield_top.png" alt="">-->
                             <h2><?= Az::l('CPA СЕТЬ')?></h2>
                             <h3><?= Az::l('С ВЫБРАННЫМИ ')?><br><?= Az::l('ВЫГОДНЫМИ ПРЕДЛОЖЕНИЯМИ')?></h3>
                             <p><?= Az::l('Работая на рекламной платформе №1, мы ДЕЛАЕМ то, что не могут сделать другие: предоставлять вам самые выгодные предложения от первоклассных прямых рекламодателей.')?></p>
@@ -127,15 +139,17 @@ $per_o = number_format($per_offers / $offers *100, 2);
             </div>
         </div>
 
-        <div class="container">
-            <div class="section-info">
-                <div class="info-header text-center mb-5">
-                    <h2 class="display-4 font-weight-bold"><?= Az::l('Эти цифры говорят сами за себя')?></h2>
-                    <h5 class="text-comment"><?= Az::l('Всего несколько простых шагов отделяют вас от успеха.')?></h5>
 
-                </div>
+        <div class="section-info">
+            <div class="info-header text-center mb-5">
+                <h2 class="display-4 font-weight-bold"><?= Az::l('Эти цифры говорят сами за себя')?></h2>
+                <h5 class="text-comment"><?= Az::l('Всего несколько простых шагов отделяют вас от успеха.')?></h5>
+
+            </div>
+
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-md-6 col-sm-12">
                         <?php
                         echo ZAdminCardWidgetNew::widget([
                             'config' => [
@@ -154,7 +168,7 @@ $per_o = number_format($per_offers / $offers *100, 2);
                         ?>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-md-6 col-sm-12">
                         <?php
                         echo ZAdminCardWidgetNew::widget([
                             'config' => [
@@ -173,7 +187,7 @@ $per_o = number_format($per_offers / $offers *100, 2);
                         ?>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-md-6 col-sm-12">
                         <?php
                         echo ZAdminCardWidgetNew::widget([
                             'config' => [
@@ -193,8 +207,8 @@ $per_o = number_format($per_offers / $offers *100, 2);
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
         <div class="wrapper">
             <div class="container">
                 <h2 class="display-4 mb-5"><?= Az::l('Зачем вести с нами дела?')?></h2>
@@ -259,7 +273,7 @@ $per_o = number_format($per_offers / $offers *100, 2);
             </div>
         </div>
         <div class="container">
-            <div class="section-money">
+            <div class="section-money p-5 m-5">
                 <div class="money-header text-center">
                     <h2 class="display-4 font-weight-bold"><?= Az::l('Начнем зарабатывать деньги!')?></h2>
                     <h5 class="text-comment"><?= Az::l('Благодаря многолетнему опыту в рекламе мы знаем, какие предложения действительно приносят пользу. Используйте наш опыт, чтобы максимизировать свою прибыль!')?></h5>
@@ -292,25 +306,26 @@ $per_o = number_format($per_offers / $offers *100, 2);
             </div>
         </div>
 
+
         <footer>
             <div class="container">
                 <div class="section-footer">
                     <div class="wrap-left">
-                        <h2 class="text-uppercase">arbit</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit. Aliquid consequuntur cupiditate dolores iure
-                            possimus quod velit. Debitis, dolore ducimus esse
-                            expedita labore, laborum maxime minus neque officia
-                            provident ullam voluptatum.
-                        </p>
+<!--                        <h2 class="text-uppercase">arbit</h2>-->
+<!--                        <p>-->
+<!--                            Lorem ipsum dolor sit amet, consectetur adipisicing-->
+<!--                            elit. Aliquid consequuntur cupiditate dolores iure-->
+<!--                            possimus quod velit. Debitis, dolore ducimus esse-->
+<!--                            expedita labore, laborum maxime minus neque officia-->
+<!--                            provident ullam voluptatum.-->
+<!--                        </p>-->
                         <hr>
                         <div class="link">
-                            <ul>
-                                <li><a href="#"><?= Az::l('Yсловия')?></a></li>
-                                <li><a href="#"><?= Az::l('Конфиденциальность')?></a></li>
-                                <li><a href="#"><?= Az::l('Политика использования файлов cookie')?></a></li>
-                            </ul>
+<!--                            <ul>-->
+<!--                                <li><a href="#">--><?//= Az::l('Yсловия')?><!--</a></li>-->
+<!--                                <li><a href="#">--><?//= Az::l('Конфиденциальность')?><!--</a></li>-->
+<!--                                <li><a href="#">--><?//= Az::l('Политика использования файлов cookie')?><!--</a></li>-->
+<!--                            </ul>-->
                         </div>
                     </div>
                     <div class="wrap-right">
@@ -322,21 +337,21 @@ $per_o = number_format($per_offers / $offers *100, 2);
                             </li>
                             <li>
                                 <i class="far fa-check-square"></i>
-                                <?= Az::l('По общим вопросам:')?> support@arbit.pro
+                                <?= Az::l('По общим вопросам:')?> <a href="https://t.me/shox1810" target="_blank">shox1810</a>
                             </li>
-                            <li>
-                                <p>
-                                <i class="far fa-check-square"></i>
-
-                                    <?= Az::l('По вопросам продаж:')?>
-                                    <br>
-                                    support@arbit.pro
-                                </p>
-                            </li>
-                            <li>
-                                <i class="far fa-check-square"></i>
-                                +35725281664
-                            </li>
+<!--                            <li>-->
+<!--                                <p>-->
+<!--                                <i class="far fa-check-square"></i>-->
+<!---->
+<!--                                    --><?//= Az::l('По вопросам продаж:')?>
+<!--                                    <br>-->
+<!--                                    support@arbit.pro-->
+<!--                                </p>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <i class="far fa-check-square"></i>-->
+<!--                                +35725281664-->
+<!--                            </li>-->
                         </ul>
                     </div>
                 </div>

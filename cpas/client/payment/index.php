@@ -46,8 +46,8 @@ $action = new WebItem();
 $action->title = Azl . 'Реквизиты';
 $action->icon = 'fa fa-globe';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 $this->paramSet(paramAction, $action);
@@ -97,7 +97,7 @@ echo $this->require('\webhtm\cpas\blocks\header.php')
 
             $model = new PaysPayment();
 
-            $model->configs->query = PaysPayment::find()
+            $model->query = PaysPayment::find()
                 ->where([
                     'user_id' => $this->userIdentity()->id
                 ]);

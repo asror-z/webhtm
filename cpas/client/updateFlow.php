@@ -45,8 +45,8 @@ $action = new WebItem();
 $action->title = Azl . 'Обновить поток';
 $action->icon = 'fa fa-globe';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 
@@ -211,8 +211,8 @@ $id = $this->httpGet('id');
                     //vdd($streamItem);
                     $streamItem->configs->nameOn = [
                         'title',
-                        'link',
-                        'track',
+//                        'link',
+//                        'track',
                         //'teaser',
                         'cpas_land_id'
 

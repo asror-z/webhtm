@@ -51,8 +51,8 @@ $action = new WebItem();
 $action->title = Azl . 'История выплат';
 $action->icon = 'fa fa-globe';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 
@@ -113,7 +113,7 @@ echo $this->require( '\webhtm\cpas\blocks\header.php');
 
             <?php
             $model = new CpasPaysHistory();
-            $model->configs->query = CpasPaysHistory::find()
+            $model->query = CpasPaysHistory::find()
                 ->where([
                     'user_id' => $this->userIdentity()->id
                 ]);

@@ -126,7 +126,7 @@ echo $this->require( '\webhtm\cpas\blocks\header.php');
                 <div class="row d-block px-3">
                     <div class="px-4 pb-3">
 
-                        <img class="rounded w-100" height="auto"
+                        <img class="rounded w-100"
                              src="<?= '/uploaz/' . App . '/' . $model->className . '/' . 'photo/' . $model->id . '/' . ZArrayHelper::getValue($model->photo, 0) ?>"
                         />
 
@@ -329,7 +329,7 @@ echo $this->require( '\webhtm\cpas\blocks\header.php');
                                     $path = '/uploaz/' . App . '/' . $cpasLands->className . '/' . 'screen/' . ZArrayHelper::getValue($cpasLand, 'id') . '/' . ZArrayHelper::getValue(ZArrayHelper::getValue($cpasLand, 'screen'), 0) ;
 
                                     return <<<HTML
-                <img src="$path" style="width: 100px; height: 60px;">          
+                <img src="$path" style="width: 100px; height: 100px;">          
 HTML;
 
 

@@ -42,8 +42,8 @@ $action = new WebItem();
 $action->title = Azl . 'Создание Item';
 $action->icon = 'fa fa-globe';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 

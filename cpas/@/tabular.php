@@ -29,8 +29,8 @@ $action = new WebItem();
 $action->title = Azl . 'Изменить все - Потребности';
 $action->icon = 'fal fa-graduation-cap';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 
@@ -40,7 +40,7 @@ $this->title();
 $this->toolbar();
 
 
-$modelClassName = $this->bootFullUrl();
+$modelClassName = $this->bootFull(ZInflector::camelize($this->urlData(1)));
 /**
  *
  * Start Page

@@ -18,11 +18,11 @@ use zetsoft\widgets\former\ZListViewWidget;
 
 $action = new WebItem();
 
-$action->title = Azl . 'Потоки';
+$action->title = Azl . 'API документация';
 $action->icon = 'fa fa-globe';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 
@@ -67,10 +67,9 @@ echo $this->require( '\webhtm\cpas\blocks\header.php');
 ?>
     <div class="container-fluid">
         <div class="mt-2">
-            <h2 class="text-muted">Потоки</h2>
             <div>
                 <a href="/cpas/client/statistic.aspx" style="font-size: small"><?= Az::l('Главная')?></a>
-                <span style="font-size: small">/ <?= Az::l('Потоки')?></span>
+                <span style="font-size: small">/ <?= Az::l('API документация')?></span>
                     
             </div>
 
@@ -82,13 +81,11 @@ echo $this->require( '\webhtm\cpas\blocks\header.php');
                </p>
 
             <pre class="border p-3 bg-white">
-                "
                 const MAIN_URL = 'http://arbit.zetsoft.uz/api/cpas/lead/create-lead.aspx';
                 const AUTH_KEY = '2e9j4VmA4bCDxwpDfcMjRhYZDsHCEug89wGus47DNqGmWnNW3NyJwXqttfrebpXR';
                 const OFFER_ID = 12352;
                 const ITEM_ID = 302;
                 const THANKS = 'thanks.php';
-
 
                 if (!empty($_POST)) {
 
@@ -130,9 +127,6 @@ echo $this->require( '\webhtm\cpas\blocks\header.php');
                     }
                     return $ip;
                 }
-
-
-                "
             </pre>
 
             <div class="container">

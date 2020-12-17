@@ -17,7 +17,6 @@ use zetsoft\widgets\themes\ZCardWidget;
 use zetsoft\models\shop\ShopBrand;
 
 
-
 /** @var ZView $this */
 
 
@@ -31,13 +30,11 @@ $action = new WebItem();
 $action->title = Azl . 'Создание Бренды';
 $action->icon = 'fa fa-globe';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
-
+$action->csrf = false;
+$action->debug = false;
 
 
 $this->paramSet(paramAction, $action);
-
 
 
 /**
@@ -47,8 +44,6 @@ $this->paramSet(paramAction, $action);
 
 $this->beginPage();
 ?>
-
-
 
 
 <body class="<?= ZWidget::skin['white-skin'] ?>">
@@ -62,7 +57,6 @@ $post = $this->httpPost();
 $id = $this->httpGet('id');
 
 
-
 /** @var Models $model */
 $model = CpasOffer::findOne($id);
 $modelItems = CpasOfferItem::find()
@@ -71,14 +65,13 @@ $modelItems = CpasOfferItem::find()
     ])
     ->all();
 
-foreach ($modelItems as $item){
+foreach ($modelItems as $item) {
     $item->delete();
 }
 
-
-if ($model->delete())
-    return $this->urlRedirect(['/cpas/admin/offer']);
-
+if ($model !== null)
+    if ($model->delete())
+        return $this->urlRedirect(['/cpas/admin/offer']);
 
 
 ?>

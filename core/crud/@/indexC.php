@@ -130,22 +130,22 @@ $this->toolbar();
     <link href="/render/former/ZDynaSearchWidget/asset/css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/icheck-material@1.0.1/icheck-material.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" rel="stylesheet">
-    <link href="/vendori/kernel/yiisofts/vendor/kartik-v/yii2-widget-activeform/src/assets/css/activeform.css" rel="stylesheet">
-    <link href="/vendori/kernel/yiisofts/vendor/kartik-v/yii2-dynagrid/src/assets/css/kv-dynagrid.css" rel="stylesheet">
-    <link href="/vendori/kernel/yiisofts/vendor/kartik-v/yii2-dialog/src/assets/css/bootstrap-dialog-bs4.css" rel="stylesheet">
-    <link href="/vendori/kernel/yiisofts/vendor/kartik-v/yii2-grid/src/assets/css/kv-grid.css" rel="stylesheet">
-    <link href="/vendori/kernel/yiisofts/vendor/kartik-v/yii2-grid/src/assets/css/kv-grid-expand.css" rel="stylesheet">
-    <link href="/vendori/kernel/yiisofts/vendor/kartik-v/yii2-bootstrap4-dropdown/src/assets/css/dropdown.css" rel="stylesheet">
-    <link href="/vendori/kernel/yiisofts/vendor/kartik-v/yii2-grid/src/assets/css/jquery.resizableColumns.css" rel="stylesheet">
-    <link href="/vendori/kernel/yiisofts/vendor/kartik-v/yii2-grid/src/assets/css/perfect-scrollbar.css" rel="stylesheet">
-    <link href="/vendori/kernel/yiisofts/vendor/select2/select2/dist/css/select2.css" rel="stylesheet">
-    <link href="/vendori/kernel/yiisofts/vendor/kartik-v/yii2-widget-select2/src/assets/css/select2-addl.css" rel="stylesheet">
-    <link href="/vendori/kernel/yiisofts/vendor/kartik-v/yii2-widget-select2/src/assets/css/select2-krajee-bs4.css" rel="stylesheet">
-    <link href="/vendori/kernel/yiisofts/vendor/kartik-v/yii2-krajee-base/src/assets/css/kv-widgets.css" rel="stylesheet">
-    <link href="/vendori/kernel/yiisofts/vendor/kartik-v/yii2-widget-datepicker/src/assets/css/bootstrap-datepicker4.css" rel="stylesheet">
-    <link href="/vendori/kernel/yiisofts/vendor/kartik-v/yii2-widget-datepicker/src/assets/css/datepicker-kv.css" rel="stylesheet">
-    <link href="/vendori/kernel/yiisofts/vendor/kartik-v/yii2-widget-datetimepicker/src/assets/css/bootstrap-datetimepicker4.css" rel="stylesheet">
-    <link href="/vendori/kernel/yiisofts/vendor/kartik-v/yii2-widget-datetimepicker/src/assets/css/datetimepicker-kv.css" rel="stylesheet">
+    <link href="/vendors/kernel/yiisofts/vendor/kartik-v/yii2-widget-activeform/src/assets/css/activeform.css" rel="stylesheet">
+    <link href="/vendors/kernel/yiisofts/vendor/kartik-v/yii2-dynagrid/src/assets/css/kv-dynagrid.css" rel="stylesheet">
+    <link href="/vendors/kernel/yiisofts/vendor/kartik-v/yii2-dialog/src/assets/css/bootstrap-dialog-bs4.css" rel="stylesheet">
+    <link href="/vendors/kernel/yiisofts/vendor/kartik-v/yii2-grid/src/assets/css/kv-grid.css" rel="stylesheet">
+    <link href="/vendors/kernel/yiisofts/vendor/kartik-v/yii2-grid/src/assets/css/kv-grid-expand.css" rel="stylesheet">
+    <link href="/vendors/kernel/yiisofts/vendor/kartik-v/yii2-bootstrap4-dropdown/src/assets/css/dropdown.css" rel="stylesheet">
+    <link href="/vendors/kernel/yiisofts/vendor/kartik-v/yii2-grid/src/assets/css/jquery.resizableColumns.css" rel="stylesheet">
+    <link href="/vendors/kernel/yiisofts/vendor/kartik-v/yii2-grid/src/assets/css/perfect-scrollbar.css" rel="stylesheet">
+    <link href="/vendors/kernel/yiisofts/vendor/select2/select2/dist/css/select2.css" rel="stylesheet">
+    <link href="/vendors/kernel/yiisofts/vendor/kartik-v/yii2-widget-select2/src/assets/css/select2-addl.css" rel="stylesheet">
+    <link href="/vendors/kernel/yiisofts/vendor/kartik-v/yii2-widget-select2/src/assets/css/select2-krajee-bs4.css" rel="stylesheet">
+    <link href="/vendors/kernel/yiisofts/vendor/kartik-v/yii2-krajee-base/src/assets/css/kv-widgets.css" rel="stylesheet">
+    <link href="/vendors/kernel/yiisofts/vendor/kartik-v/yii2-widget-datepicker/src/assets/css/bootstrap-datepicker4.css" rel="stylesheet">
+    <link href="/vendors/kernel/yiisofts/vendor/kartik-v/yii2-widget-datepicker/src/assets/css/datepicker-kv.css" rel="stylesheet">
+    <link href="/vendors/kernel/yiisofts/vendor/kartik-v/yii2-widget-datetimepicker/src/assets/css/bootstrap-datetimepicker4.css" rel="stylesheet">
+    <link href="/vendors/kernel/yiisofts/vendor/kartik-v/yii2-widget-datetimepicker/src/assets/css/datetimepicker-kv.css" rel="stylesheet">
     <style></style>
     <style>
 
@@ -1136,7 +1136,7 @@ $this->toolbar();
     <script src="https://cdn.jsdelivr.net/npm/jspanel4@4.10.1/dist/extensions/contextmenu/jspanel.contextmenu.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jspanel4@4.10.1/dist/extensions/dock/jspanel.dock.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.3/dist/jquery.inputmask.js"></script>
-    <script src="/vendori/kernel/yiisofts/vendor/kartik-v/yii2-dialog/src/assets/js/dialog.js"></script>
+    <script src="/vendors/kernel/yiisofts/vendor/kartik-v/yii2-dialog/src/assets/js/dialog.js"></script>
     <script>var krajeeDialogDefaults_d92bf583 = {"alert":{"type":"type-info","title":"Информация","buttonLabel":"<span class=\"fas fa-check\"></span> Ok"},"confirm":{"type":"type-warning","title":"Подтверждение","btnOKClass":"btn-warning","btnOKLabel":"<span class=\"fas fa-check\"></span> Ok","btnCancelLabel":"<span class=\"fas fa-ban\"></span>  Отмена"},"prompt":{"draggable":false,"title":"Информация","buttons":[{"label":"Отмена","icon":"fas fa-ban","cssClass":"btn-outline-secondary"},{"label":"Ok","icon":"fas fa-check","cssClass":"btn-primary"}],"closable":false},"dialog":{"draggable":true,"title":"Информация","buttons":[{"label":"Отмена","icon":"fas fa-ban","cssClass":"btn-outline-secondary"},{"label":"Ok","icon":"fas fa-check","cssClass":"btn-primary"}]}};
         var krajeeDialog_dfeddae9 = {"id":"w37"};
         var krajeeDialog=new KrajeeDialog(true,krajeeDialog_dfeddae9,krajeeDialogDefaults_d92bf583);

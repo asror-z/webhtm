@@ -67,20 +67,12 @@ $this->beginPage();
 
     $this->head();
 
-    //start|JakhongirKudratov|
+    //start|JakhongirKudratov
 
     $filter = Az::$app->cpas->cpa->getFilters();
     $filter_data = $this->httpGet();
     $def = 'byday';
     $def_attr = 'day';
-
-    $user_id = ZArrayHelper::getValue($this->httpGet(), 'id');
-    if ($user_id === null){
-        return $this->urlGetBack();
-
-    }
-
-    $user = \zetsoft\models\user\User::findOne($user_id);
 
     //vdd($filter);
     ?>
@@ -100,19 +92,18 @@ echo $this->require( '\webhtm\cpas\blocks\header.php')
 
         <div class="col-md-12">
 
-
             <div class="col-md-11 ml-auto mr-auto statistic-header">
 
                 <div class="statistic-nav">
 
-                    <button class="btn statistic-nav--links select-btns" value="time">Время</button>
-                    <button class="btn statistic-nav--links select-btns" value="offer">Офферы</button>
-                    <button class="btn statistic-nav--links select-btns" value="stream">Потоки</button>
-                    <button class="btn statistic-nav--links select-btns" value="lands">Лендинги</button>
-                    <button class="btn statistic-nav--links select-btns" value="prelands">Прелендинг</button>
-                    <button class="btn statistic-nav--links select-btns" value="preland_with_form">Прелендинг с формой</button>
-                    <button class="btn statistic-nav--links select-btns" value="country">Страны</button>
-                    <button class="btn statistic-nav--links select-btns" value="device">Устройства</button>
+                    <button class="btn statistic-nav--links select-btns" value="time"><?= Az::l('Время')?></button>
+                    <button class="btn statistic-nav--links select-btns" value="offer"><?= Az::l('Офферы')?></button>
+                    <button class="btn statistic-nav--links select-btns" value="stream"><?= Az::l('Потоки')?></button>
+                    <button class="btn statistic-nav--links select-btns" value="lands"><?= Az::l('Лендинги')?></button>
+                    <button class="btn statistic-nav--links select-btns" value="prelands"><?= Az::l('Прелендинг')?></button>
+                    <button class="btn statistic-nav--links select-btns" value="preland_with_form"><?= Az::l('Прелендинг с формой')?></button>
+                    <button class="btn statistic-nav--links select-btns" value="country"><?= Az::l('Страны')?></button>
+                    <button class="btn statistic-nav--links select-btns" value="device"><?= Az::l('Устройства')?></button>
                     
 
                 </div>
@@ -126,9 +117,9 @@ echo $this->require( '\webhtm\cpas\blocks\header.php')
                                 <div class="col-md-4 p-0 m-0">
                                     <?
 
-
+                                    $user_id = $this->userIdentity()->id;
                                     $today = date('Y-m-d');
-
+                                    
                                     echo ZKDatepickerWidget::widget([
                                         'name' => 'startdate',
                                         'value' => $filter->startdate,
@@ -140,7 +131,6 @@ echo $this->require( '\webhtm\cpas\blocks\header.php')
                                     ]);
 
                                     ?>
-                    <input type="hidden" name="id" id="userId" value="<?= $user_id?>">
                                 </div>
                                 <div class="do">
                                     <p>до</p>
@@ -175,11 +165,11 @@ echo $this->require( '\webhtm\cpas\blocks\header.php')
                                     //vdd($days);
                                 ?>
                                 
-                                <button value="<?= $days['today']?>" class="btn time-btns statistic-btn--first" id="todayTime">Сегодня</button>
-                                <button value="<?= $days['yesterday']?>" class="btn time-btns statistic-btn" id="yesterdayTime">Вчера</button>
-                                <button value="<?= $days['week']?>" class="btn time-btns statistic-btn">Неделя</button>
-                                <button value="<?= $days['month']?>" class="btn time-btns statistic-btn">Месяц</button>
-                                <button value="<?= $days['year']?>" class="btn time-btns statistic-btn--second">Год</button>
+                                <button value="<?= $days['today']?>" class="btn time-btns statistic-btn--first" id="todayTime"><?= Az::l('Сегодня')?></button>
+                                <button value="<?= $days['yesterday']?>" class="btn time-btns statistic-btn" id="yesterdayTime"><?= Az::l('Вчера')?></button>
+                                <button value="<?= $days['week']?>" class="btn time-btns statistic-btn"><?= Az::l('Неделя')?></button>
+                                <button value="<?= $days['month']?>" class="btn time-btns statistic-btn"><?= Az::l('Месяц')?></button>
+                                <button value="<?= $days['year']?>" class="btn time-btns statistic-btn--second"><?= Az::l('Год')?></button>
 
                             </div>
 
@@ -187,14 +177,39 @@ echo $this->require( '\webhtm\cpas\blocks\header.php')
                         </div>
                         <div class="col-md-3 ml-auto d-flex">
 
+                            <!--<a href="/cpas/client/statistic.aspx" class="reloads">
+                                <i class="fal fa-undo"></i>
+                            </a>-->
+                            <?
+                                echo  ZButtonWidget::widget([
+                                    'config' => [
+                                        'btn' => false,
+                                        'url' => '/cpas/client/statistic.aspx',
+                                        'title' => Az::l('Сбросить все фильтры'),
+                                        'class' => 'reloads',
+                                        'btnRounded' => false,
+                                        'icon' =>  'fal fa-undo',
+                                    ]
+                                ]);
 
+                                echo  ZButtonWidget::widget([
+                                    'config' => [
+                                        'btn' => false,
+                                        'url' => '',
+                                        'title' => Az::l('Обновить'),
+                                        'class' => 'reloads',
+                                        'btnRounded' => false,
+                                        'icon' =>  'fal fa-refresh',
+                                    ]
+                                ]);
+                            ?>
 
                         </div>
                     </div>
 
 
                     <div class="d-flex col-md-4 mt-3">
-                    <!--<div class="dates">
+                   <!-- <div class="dates">
                         <button value="byday" class="btn year-btn select-times">Дни</button>
                     </div>-->
                 </div>
@@ -229,10 +244,7 @@ echo $this->require( '\webhtm\cpas\blocks\header.php')
                 'earned_money',
             ];
             $model->columns();
-            $data = Az::$app->cpas->cpasStats->generateClientStats($user_id, $filter_data);
-            $title = Az::l('Статистика пользователя {user}',[
-                'user' => $user->email
-            ]);
+            $data = Az::$app->cpas->cpasStats->generateClientStats($user_id,$filter_data);
             echo ZDynaWidget::widget([
                 'data' => $data,
                 'model' => $model,
@@ -259,7 +271,7 @@ echo $this->require( '\webhtm\cpas\blocks\header.php')
                     ],
 
                     'export' => [
-                        'content' => '{export}',
+                        'content' => '{JsonExcel}',
                         'options' => ['class' => 'btn-group p-1 {btnSize} {iconSize}']
                     ],
                     'filter-sort-id' => [
@@ -268,7 +280,7 @@ echo $this->require( '\webhtm\cpas\blocks\header.php')
                     ],
                 ],
                 'config' => [
-                    'title'=> $title,
+                    'title'=>Az::l('Статистика пользователей'),
                     'type' => 'form',
                     'hasToolbar' => true,
                     'editableLink' => true,
@@ -286,6 +298,7 @@ echo $this->require( '\webhtm\cpas\blocks\header.php')
 
                 ]
             ]);
+
             ?>
         </div>
 
@@ -294,6 +307,7 @@ echo $this->require( '\webhtm\cpas\blocks\header.php')
 </div>
 
 <script>
+    //alert(<?=$filter->selectedBtnValue?>);
     $(".select-btns[value='<?= $filter->selectedBtnValue?>']").addClass('activeBtn');
     $(".time-btns[value='<?= $filter->startdate?>']").addClass('activeBtn');
     $(".year-btn[value='<?= $filter->selectTimes?$filter->selectTimes:$def?>']").addClass('active-year');
@@ -339,7 +353,6 @@ echo $this->require( '\webhtm\cpas\blocks\header.php')
 
     });
 
-   
    
 </script>
 

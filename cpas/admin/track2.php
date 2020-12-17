@@ -44,8 +44,8 @@ $action = new WebItem();
 $action->title = Azl . 'Контроль заказа';
 $action->icon = 'fa fa-globe';
 $action->type = WebItem::type['html'];
-$action->csrf = true;
-$action->debug = true;
+$action->csrf = false;
+$action->debug = false;
 
 
 $this->paramSet(paramAction, $action);
@@ -114,7 +114,7 @@ echo $this->require('\webhtm\cpas\blocks\header.php');
 
                 $model = new CpasTracker();
 
-                $model->configs->query = CpasTracker::find()
+                $model->query = CpasTracker::find()
                     ->where(['not',[
                         'contact_name' => null
                     ]])
